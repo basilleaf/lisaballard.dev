@@ -109,18 +109,18 @@ export default function ProjectModal({
         ];
 
   const navArrowButtonClass =
-    "inline-flex min-h-14 min-w-14 shrink-0 items-center justify-center rounded-lg px-10 py-6 text-[#4a4a4a] opacity-60 transition-[opacity,color] hover:text-[#8a8a8a] hover:opacity-100 sm:min-h-16 sm:min-w-16 sm:px-12 sm:py-7";
+    "inline-flex min-h-14 min-w-14 shrink-0 items-center justify-center rounded-lg px-5 py-3 text-[#4a4a4a] opacity-60 transition-[opacity,color] hover:text-[#8a8a8a] hover:opacity-100 sm:min-h-16 sm:min-w-16 sm:px-6 sm:py-3.5";
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-[1px] p-4 sm:p-8"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-[1px] p-0 sm:p-8"
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-modal-title"
       onClick={onClose}
     >
       <div
-        className="mx-auto mt-8 max-w-6xl rounded-2xl border border-[#232323] bg-[#121212] p-4 sm:p-6 lg:p-8"
+        className="mx-auto min-h-dvh w-full max-w-6xl bg-[#121212] p-4 pb-safe sm:min-h-0 sm:mt-8 sm:rounded-2xl sm:border sm:border-[#232323] sm:p-6 lg:p-8"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="mb-5 flex items-start justify-between gap-4 border-b border-[#222] pb-4">
@@ -155,14 +155,8 @@ export default function ProjectModal({
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            <div
-              className={
-                project["detail-image-bottom"]
-                  ? "relative aspect-video overflow-hidden rounded-lg border border-[#252525] bg-[#1a1a1a]"
-                  : "relative aspect-video"
-              }
-            >
-              {project["detail-image-bottom"] ? (
+            {project["detail-image-bottom"] ? (
+              <div className="relative aspect-video overflow-hidden rounded-lg border border-[#252525] bg-[#1a1a1a]">
                 <Image
                   src={project["detail-image-bottom"]}
                   alt={
@@ -173,10 +167,13 @@ export default function ProjectModal({
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-              ) : (
-                <div aria-hidden="true" className="h-full w-full" />
-              )}
-            </div>
+              </div>
+            ) : (
+              <div
+                aria-hidden
+                className="hidden w-full lg:relative lg:block lg:aspect-video"
+              />
+            )}
           </div>
 
           <div className="rounded-lg bg-[#101010] p-5 sm:p-6">
@@ -224,8 +221,7 @@ export default function ProjectModal({
               {project?.["more-info-link"] && (
                 <p className="mt-1 text-xs leading-relaxed text-[#7a7a7a]">
                   <Link href={project?.["more-info-link"]}>
-                    More info and credits{" "}
-                    <span aria-hidden="true">↗</span>
+                    More info and credits <span aria-hidden="true">↗</span>
                   </Link>
                 </p>
               )}
