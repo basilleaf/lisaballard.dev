@@ -2,16 +2,17 @@ import Image from "next/image";
 
 type Tag = {
   label: string;
-  color:
-    | "amber"
-    | "teal"
-    | "blue"
-    | "coral"
-    | "purple"
-    | "pink"
-    | "green"
-    | "gray";
 };
+
+type TagColor =
+  | "amber"
+  | "teal"
+  | "blue"
+  | "coral"
+  | "purple"
+  | "pink"
+  | "green"
+  | "gray";
 
 type Project = {
   title: string;
@@ -26,70 +27,66 @@ const projects: Project[] = [
     title: "Life Under the Ice",
     description:
       "Interactive research map deployed to a kiosk at McMurdo Station, Antarctica. Lead developer.",
-    image: "/screenshots/life-under-ice.png",
+    image: "/screenshots/luti-homepage.png",
     href: "https://lifeundertheice.org",
-    tags: [
-      { label: "React", color: "blue" },
-      { label: "Leaflet", color: "green" },
-    ],
+    tags: [{ label: "React" }, { label: "Leaflet" }],
   },
   {
     title: "Space Probes",
     description:
       "Humanity's reach into the solar system. Covered by Wired & Popular Mechanics.",
-    image: "/screenshots/space-probes.png",
-    tags: [
-      { label: "React", color: "gray" },
-      { label: "Flask", color: "blue" },
-      { label: "Python", color: "green" },
-    ],
+    image: "/screenshots/spaceprobes-homepage.png",
+    tags: [{ label: "React" }, { label: "Flask" }, { label: "Python" }],
   },
   {
     title: "Lit Flashcards",
     description:
       "RAG-powered flashcard generator for classic literature using Project Gutenberg texts.",
     image: "/screenshots/lit-flashcards.png",
-    tags: [
-      { label: "Anthropic API", color: "teal" },
-      { label: "pgvector", color: "green" },
-      { label: "Next.js", color: "gray" },
-    ],
+    tags: [{ label: "Anthropic API" }, { label: "pgvector" }, { label: "Next.js" }],
   },
   {
     title: "This Site",
     description: "Portfolio built with Next.js + Tailwind, deployed to Vercel.",
     image: "/screenshots/this-site.png",
-    tags: [
-      { label: "Next.js", color: "coral" },
-      { label: "Tailwind", color: "amber" },
-      { label: "Vercel", color: "gray" },
-    ],
+    tags: [{ label: "Next.js" }, { label: "Tailwind" }, { label: "Vercel" }],
   },
   {
     title: "CV Zoomies",
     description:
       "Meshtastic LoRa mesh network node, wall-mounted in Castro Valley.",
     image: "/screenshots/cv-zoomies.png",
-    tags: [
-      { label: "Meshtastic", color: "blue" },
-      { label: "LoRa", color: "purple" },
-      { label: "IoT", color: "gray" },
-    ],
+    tags: [{ label: "Meshtastic" }, { label: "LoRa" }, { label: "IoT" }],
   },
   {
     title: "Zappa Graph",
     description:
       "Musician relationship graph for Frank Zappa's extended network.",
     image: "/screenshots/zappa-graph.png",
-    tags: [
-      { label: "D3.js", color: "pink" },
-      { label: "GraphQL", color: "purple" },
-      { label: "PostgreSQL", color: "gray" },
-    ],
+    tags: [{ label: "D3.js" }, { label: "GraphQL" }, { label: "PostgreSQL" }],
   },
 ];
 
-const tagStyles: Record<Tag["color"], string> = {
+const labelColors: Record<string, TagColor> = {
+  "Anthropic API": "teal",
+  "D3.js": "pink",
+  Flask: "blue",
+  GraphQL: "purple",
+  IoT: "gray",
+  Leaflet: "green",
+  LoRa: "purple",
+  Meshtastic: "blue",
+  "Next.js": "coral",
+  PostgreSQL: "gray",
+  pgvector: "green",
+  Python: "green",
+  React: "blue",
+  Tailwind: "amber",
+};
+
+const DEFAULT_TAG_COLOR: TagColor = "gray";
+
+const tagStyles: Record<TagColor, string> = {
   amber: "bg-[#291800] text-[#FAC775]",
   teal: "bg-[#041a11] text-[#5DCAA5]",
   blue: "bg-[#040f1f] text-[#85B7EB]",
@@ -138,14 +135,17 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Tags */}
         <div className="flex flex-wrap gap-1.5 mt-1">
-          {project.tags.map((tag) => (
-            <span
-              key={tag.label}
-              className={`text-[11px] font-medium px-2.5 py-0.5 rounded-full tracking-wide ${tagStyles[tag.color]}`}
-            >
-              {tag.label}
-            </span>
-          ))}
+          {project.tags.map((tag) => {
+            const color = labelColors[tag.label] ?? DEFAULT_TAG_COLOR;
+            return (
+              <span
+                key={tag.label}
+                className={`text-[11px] font-medium px-2.5 py-0.5 rounded-full tracking-wide ${tagStyles[color]}`}
+              >
+                {tag.label}
+              </span>
+            );
+          })}
         </div>
       </div>
     </Wrapper>
