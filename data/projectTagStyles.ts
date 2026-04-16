@@ -37,7 +37,7 @@ export const labelColors: Record<string, TagColor> = {
   Wordpress: "lavender",
   React: "blue",
   Tailwind: "amber",
-  python: "green",
+  Python: "green",
   Javascript: "gold",
   Django: "blue",
   Cursor: "purple",
