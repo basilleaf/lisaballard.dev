@@ -131,9 +131,19 @@ export default function ProjectModal({
             >
               {project.title}
             </h2>
-            <p className="mt-1 text-sm text-[#666]">
-              Click outside or press Esc to close
-            </p>
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {project.tags.map((tag) => {
+                const color = labelColors[tag.label] ?? DEFAULT_TAG_COLOR;
+                return (
+                  <span
+                    key={tag.label}
+                    className={`text-[11px] font-medium px-2.5 py-0.5 rounded-full tracking-wide ${tagStyles[color]}`}
+                  >
+                    {tag.label}
+                  </span>
+                );
+              })}
+            </div>
           </div>
           <button
             type="button"
@@ -180,22 +190,10 @@ export default function ProjectModal({
             <h3 className="font-syne text-lg font-semibold text-[#F0EDE6]">
               Project details
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#bdbdbd]">
+
+            <p className="mt-4 text-sm leading-relaxed text-[#bdbdbd]">
               {project.description}
             </p>
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {project.tags.map((tag) => {
-                const color = labelColors[tag.label] ?? DEFAULT_TAG_COLOR;
-                return (
-                  <span
-                    key={tag.label}
-                    className={`text-[11px] font-medium px-2.5 py-0.5 rounded-full tracking-wide ${tagStyles[color]}`}
-                  >
-                    {tag.label}
-                  </span>
-                );
-              })}
-            </div>
             <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#c8c8c8]">
               {modalBullets.map((bullet) => (
                 <li key={bullet}>{bullet}</li>
