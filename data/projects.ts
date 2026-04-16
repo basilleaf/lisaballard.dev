@@ -32,7 +32,7 @@ export function projectSlug(project: Project): string {
 export const projects: Project[] = [
   {
     title: "Portfolio site",
-    description: "This Website! A vibe coded basic portfolio",
+    description: "This Website - A vibe coded basic portfolio",
     image: "/screenshots/portfolio-site-homepage.png",
     "detail-image-top": "/screenshots/portfolio-site-homepage.png",
     "detail-image-bottom": "/screenshots/portfolio-site-detail.png",
@@ -40,9 +40,10 @@ export const projects: Project[] = [
     "detail-image-bottom-alt": "Portfolio detail screenshot",
     tags: [{ label: "Next.js" }, { label: "Cursor" }, { label: "Claude" }],
     bullets: [
-      "Next.js Portfolio coded with Cursor and Claude",
+      "Next.js Portfolio built with Cursor and Claude",
       "Mobile responsive design",
       "Next and Previous buttons for project navigation",
+      "Distinct URL for each project",
     ],
     "more-info-text": "credit: Ariel Waldman",
     "more-info-link": "https://arielwaldman.com/",
@@ -50,7 +51,7 @@ export const projects: Project[] = [
   {
     title: "Life Under the Ice",
     description:
-      "Interactive map of microscopic creatures collected in Antarctica..",
+      "Interactive map of microscopic creatures collected in Antarctica.",
     image: "/screenshots/luti-homepage.png",
     "detail-image-top": "/screenshots/luti-homepage.png",
     "detail-image-bottom": "/screenshots/luti-detail.png",
@@ -59,10 +60,10 @@ export const projects: Project[] = [
     href: "https://lifeundertheice.org",
     tags: [{ label: "React" }, { label: "Leaflet" }],
     bullets: [
-      "Interactive Leaflet map with HLS streaming video tile overlays.",
+      "Interactive Leaflet map with HLS streaming video tile overlays",
       "Interactive content elements with React",
-      "Keyboard Accessible.",
-      "Deployed to a kiosk at McMurdo Station, Antarctica.",
+      "Keyboard Accessible",
+      "Deployed to a kiosk at McMurdo Station, Antarctica",
     ],
     "more-info-text": "credit: Ariel Waldman",
     "more-info-link": "https://lifeundertheice.org/about",
@@ -78,8 +79,8 @@ export const projects: Project[] = [
     href: "https://spaceprob.es",
     tags: [{ label: "Python" }, { label: "Flask" }, { label: "Jekyll" }],
     bullets: [
-      "Automated scraping of news stories and Deep Space Network spacecraft data with Python & Beutiful Soup.",
-      "Latest news aggregator scraper and admin built with Python &Flask",
+      "Automated scraping of news stories and Deep Space Network spacecraft data with Python & Beautiful Soup",
+      "Latest news aggregator scraper and admin built with Python & Flask",
       "Distances API endpoint built with Flask",
       "Site built with Jekyll",
     ],
@@ -114,9 +115,14 @@ export const projects: Project[] = [
     "detail-image-bottom": "/screenshots/opus.png",
     "detail-image-top-alt": "OPUS gallery screenshot",
     "detail-image-bottom-alt": "OPUS search results screenshot",
-    tags: [{ label: "Django" }, { label: "Python" }, { label: "Javascript" }],
+    tags: [
+      { label: "Django" },
+      { label: "Python" },
+      { label: "Javascript" },
+      { label: "MySQL" },
+    ],
     bullets: [
-      "Site built with Django, Python, JavaScript.",
+      "Site built with Django, Python, JavaScript",
       "Data injestion pipeline built with object oriented PHP",
     ],
     "more-info-text": "NASA Planetary Data System, Ring-Moon Systems Node",
@@ -143,8 +149,8 @@ export const projects: Project[] = [
       { label: "Wordpress" },
     ],
     bullets: [
-      "Data Scraped from NASA HiRise website using Python & BeautifulSoup.",
-      "Wordpress posts generated via python script.",
+      "Data Scraped from NASA HiRise website using Python & BeautifulSoup",
+      "Wordpress posts generated via python script",
       "Created at Mars Hackathon",
     ],
     "more-info-link": "https://marsfromspace.com/about/",
@@ -174,8 +180,8 @@ export const projects: Project[] = [
     "detail-image-bottom-alt": "Seahack directory screenshot",
     tags: [{ label: "Javascript" }, { label: "Jekyll" }],
     bullets: [
-      "Built with JavaScript and Jekyll.",
-      "Highlights opportunities and organizations people can join to get involved in sea exploration.",
+      "Built with JavaScript and Jekyll",
+      "Highlights opportunities and organizations people can join to get involved in sea exploration",
     ],
     "more-info-text": "credit: Ariel Waldman",
     "more-info-link": "https://arielwaldman.com/",
@@ -188,7 +194,7 @@ export const projects: Project[] = [
     "detail-image-top-alt": "Rocket Weekly Tumblr bot screenshot",
     tags: [{ label: "Python" }, { label: "BeautifulSoup" }],
     bullets: [
-      "Data scraped from NASA using Python & BeautifulSoup.",
+      "Data scraped from NASA using Python & BeautifulSoup",
       "Automated tumblr posting with Python script",
     ],
   },
@@ -200,7 +206,7 @@ export const projects: Project[] = [
     "detail-image-top-alt": "Sunglint Tumblr bot screenshot",
     tags: [{ label: "Python" }, { label: "BeautifulSoup" }],
     bullets: [
-      "Data scraped from NASA using Python & BeautifulSoup.",
+      "Data scraped from NASA using Python & BeautifulSoup",
       "Automated tumblr posting with Python script",
     ],
   },

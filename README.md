@@ -1,4 +1,4 @@
-https://www.lisaballard.dev/
+deployed to https://www.lisaballard.dev/
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
