@@ -1,13 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
-import { projects, type Project } from "@/data/projects";
+import { getProjectBySlug, projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import ProjectModal from "@/components/ProjectModal";
 
 export default function ProjectsGrid() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const selectedProject = useMemo(() => {
+    const match = pathname.match(/^\/project\/([^/]+)\/?$/);
+    if (!match) return null;
+    return getProjectBySlug(match[1]) ?? null;
+  }, [pathname]);
+
+  const closeModal = () => {
+    router.push("/");
+  };
 
   return (
     <div className="bg-[#0D0D0D] min-h-screen text-[#F0EDE6] font-sans pb-12">
@@ -40,20 +52,13 @@ export default function ProjectsGrid() {
         {/* Hairline-divided grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-[#1a1a1a] rounded-2xl overflow-hidden divide-x divide-y divide-[#1a1a1a]">
           {projects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-              onClick={setSelectedProject}
-            />
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
       </main>
 
       {selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
+        <ProjectModal project={selectedProject} onClose={closeModal} />
       )}
 
       {/* Footer */}

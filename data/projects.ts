@@ -1,5 +1,3 @@
-import { LinkProps } from "next/link";
-
 export type Tag = {
   label: string;
 };
@@ -18,6 +16,18 @@ export type Project = {
   "more-info-link"?: string;
   "more-info-text"?: string;
 };
+
+function slugifyTitle(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/** URL segment for `/project/{projectName}` — derived from the display title. */
+export function projectSlug(project: Project): string {
+  return slugifyTitle(project.title);
+}
 
 export const projects: Project[] = [
   {
@@ -179,3 +189,8 @@ export const projects: Project[] = [
     ],
   },
 ];
+
+export function getProjectBySlug(segment: string): Project | undefined {
+  const normalized = decodeURIComponent(segment).trim().toLowerCase();
+  return projects.find((p) => slugifyTitle(p.title) === normalized);
+}

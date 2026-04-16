@@ -1,21 +1,21 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
-import { type Project } from "@/data/projects";
+import { projectSlug, type Project } from "@/data/projects";
 import { DEFAULT_TAG_COLOR, labelColors, tagStyles } from "@/data/projectTagStyles";
 
 type ProjectCardProps = {
   project: Project;
-  onClick: (project: Project) => void;
 };
 
-export default function ProjectCard({ project, onClick }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <button
-      type="button"
-      onClick={() => onClick(project)}
-      className="group relative flex flex-col gap-4 bg-[#111] p-6 cursor-pointer transition-colors duration-200 hover:bg-[#161616]"
+    <Link
+      href={`/project/${projectSlug(project)}`}
+      scroll={false}
+      className="group relative flex flex-col gap-4 bg-[#111] p-6 cursor-pointer transition-colors duration-200 hover:bg-[#161616] text-left"
     >
       {/* Arrow */}
       <span className="absolute top-5 right-6 text-sm text-[#333] transition-all duration-200 group-hover:text-[#F0EDE6] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -55,6 +55,6 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           })}
         </div>
       </div>
-    </button>
+    </Link>
   );
 }
