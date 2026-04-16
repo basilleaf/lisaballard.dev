@@ -168,7 +168,7 @@ export default function ProjectModal({
           <div>
             <h2
               id="project-modal-title"
-              className="font-syne text-2xl font-bold tracking-tight text-[#F0EDE6]"
+              className="font-syne text-3xl font-bold tracking-tight text-[#F0EDE6] sm:text-4xl"
             >
               {project.title}
             </h2>
@@ -178,7 +178,7 @@ export default function ProjectModal({
                 return (
                   <span
                     key={tag.label}
-                    className={`text-[11px] font-medium px-2.5 py-0.5 rounded-full tracking-wide ${tagStyles[color]}`}
+                    className={`text-xs font-medium px-2.5 py-0.5 rounded-full tracking-wide ${tagStyles[color]}`}
                   >
                     {tag.label}
                   </span>
@@ -189,7 +189,7 @@ export default function ProjectModal({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-md border border-[#2a2a2a] px-3 py-1.5 text-sm text-[#999] transition-colors hover:border-[#3a3a3a] hover:text-[#F0EDE6]"
+            className="rounded-md border border-[#2a2a2a] px-3 py-2 text-base text-[#999] transition-colors hover:border-[#3a3a3a] hover:text-[#F0EDE6]"
           >
             Close
           </button>
@@ -227,15 +227,15 @@ export default function ProjectModal({
             )}
           </div>
 
-          <div className="rounded-lg bg-[#101010] p-5 sm:p-6">
-            <h3 className="font-syne text-lg font-semibold text-[#F0EDE6]">
+          <div className="rounded-lg bg-[#101010] p-5 sm:p-7">
+            <h3 className="font-syne text-xl font-semibold text-[#F0EDE6] sm:text-2xl">
               Project details
             </h3>
 
-            <p className="mt-4 text-sm leading-relaxed text-[#bdbdbd]">
+            <p className="mt-4 text-base leading-relaxed text-[#bdbdbd] sm:text-lg sm:leading-relaxed">
               {project.description}
             </p>
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[#c8c8c8]">
+            <ul className="mt-4 list-disc space-y-3 pl-5 text-base leading-relaxed text-[#c8c8c8] sm:text-lg sm:leading-relaxed">
               {modalBullets.map((bullet) => (
                 <li key={bullet}>{bullet}</li>
               ))}
@@ -245,20 +245,20 @@ export default function ProjectModal({
               <a
                 href={project.href}
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center text-sm text-[#D85A30] transition-colors hover:text-[#f0845e]"
+                className="mt-6 inline-flex items-center text-base font-medium text-[#D85A30] transition-colors hover:text-[#f0845e] sm:text-lg"
               >
                 Open project ↗
               </a>
             )}
 
-            <div className="mt-5 border-t border-[#1f1f1f] pt-3">
+            <div className="mt-5 border-t border-[#1f1f1f] pt-4">
               {project?.["more-info-text"] && (
-                <p className="mt-1 text-xs leading-relaxed text-[#7a7a7a]">
+                <p className="mt-1 text-sm leading-relaxed text-[#8a8a8a]">
                   {project?.["more-info-text"]}
                 </p>
               )}
               {project?.["more-info-link"] && (
-                <p className="mt-1 text-xs leading-relaxed text-[#7a7a7a]">
+                <p className="mt-1 text-sm leading-relaxed text-[#8a8a8a]">
                   <Link href={project?.["more-info-link"]}>
                     More info and credits <span aria-hidden="true">↗</span>
                   </Link>
