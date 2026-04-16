@@ -22,9 +22,7 @@ export default function ProjectsGrid() {
   };
 
   const selectedIndex = selectedProject
-    ? projects.findIndex(
-        (p) => projectSlug(p) === projectSlug(selectedProject),
-      )
+    ? projects.findIndex((p) => projectSlug(p) === projectSlug(selectedProject))
     : -1;
 
   const goToProjectAt = (index: number) => {
@@ -89,15 +87,21 @@ export default function ProjectsGrid() {
       {/* Footer */}
       <footer className="flex gap-6 px-10 mt-8 pt-7 border-t border-[#1a1a1a] flex-wrap">
         {[
-          { label: "GitHub", href: "https://github.com/yourusername" },
-          { label: "LinkedIn", href: "https://linkedin.com/in/yourusername" },
-          { label: "Resume", href: "/resume.pdf" },
-          { label: "hello@lisa.dev", href: "mailto:hello@lisa.dev" },
+          { label: "GitHub", href: "https://github.com/basilleaf" },
+          {
+            label: "LinkedIn",
+            href: "https://www.linkedin.com/in/lisaballard42/",
+          },
+          // { label: "Resume", href: "/resume.pdf" },
+          {
+            label: "lisaballard.dev@gmail.com",
+            href: "mailto:lisaballard.dev@gmail.com",
+          },
         ].map((link) => (
           <a
             key={link.label}
             href={link.href}
-            className="text-[13px] text-[#444] hover:text-[#F0EDE6] transition-colors duration-150"
+            className="text-[13px] text-[#b8b6b1] hover:text-[#F0EDE6] transition-colors duration-150"
           >
             {link.label}
           </a>
