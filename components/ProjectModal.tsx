@@ -111,6 +111,20 @@ export default function ProjectModal({
   const navArrowButtonClass =
     "inline-flex min-h-14 min-w-14 shrink-0 items-center justify-center rounded-lg px-5 py-3 text-[#4a4a4a] opacity-60 transition-[opacity,color] hover:text-[#8a8a8a] hover:opacity-100 sm:min-h-16 sm:min-w-16 sm:px-6 sm:py-3.5";
 
+  const navArrowButtonClassDesktop =
+    "inline-flex min-h-12 min-w-12 shrink-0 items-center justify-center rounded-lg p-2 text-[#4a4a4a] opacity-70 transition-[opacity,color] hover:text-[#b5b5b5] hover:opacity-100 lg:min-h-14 lg:min-w-14 lg:p-3";
+
+  const desktopNavRailClass =
+    "hidden w-[3.25rem] shrink-0 flex-col items-center justify-center border-[#222] lg:flex";
+
+  const mobileNavSlotClass =
+    "flex min-h-14 min-w-14 shrink-0 items-center justify-center sm:min-h-16 sm:min-w-16";
+
+  const desktopNavPlaceholderClass =
+    "pointer-events-none h-10 w-10 shrink-0 lg:h-12 lg:w-12";
+
+  const showNav = Boolean(onPrevious || onNext);
+
   return (
     <div
       className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-[1px] p-0 sm:p-8"
@@ -120,9 +134,36 @@ export default function ProjectModal({
       onClick={onClose}
     >
       <div
-        className="mx-auto min-h-dvh w-full max-w-6xl bg-[#121212] p-4 pb-safe sm:min-h-0 sm:mt-8 sm:rounded-2xl sm:border sm:border-[#232323] sm:p-6 lg:p-8"
+        className="mx-auto mt-0 w-full max-w-6xl sm:mt-8 lg:max-w-7xl xl:max-w-[min(92vw,1400px)]"
         onClick={(event) => event.stopPropagation()}
       >
+        <div
+          className="flex min-h-dvh w-full flex-col overflow-hidden bg-[#121212] p-0 pb-safe sm:min-h-0 sm:rounded-2xl sm:border sm:border-[#232323] lg:min-h-0 lg:flex-row lg:items-stretch"
+        >
+          {showNav ? (
+            <div
+              className={`${desktopNavRailClass} border-r`}
+              aria-hidden={!onPrevious}
+            >
+              {onPrevious ? (
+                <button
+                  type="button"
+                  aria-label="Previous project"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onPrevious();
+                  }}
+                  className={`${navArrowButtonClassDesktop} lg:px-0`}
+                >
+                  <ChevronIcon direction="left" />
+                </button>
+              ) : (
+                <span className={desktopNavPlaceholderClass} aria-hidden />
+              )}
+            </div>
+          ) : null}
+
+          <div className="min-w-0 flex-1 p-4 sm:p-6 lg:p-8">
         <div className="mb-5 flex items-start justify-between gap-4 border-b border-[#222] pb-4">
           <div>
             <h2
@@ -227,44 +268,69 @@ export default function ProjectModal({
           </div>
         </div>
 
-        {(onPrevious || onNext) && (
-          <div
-            className={`mt-6 flex items-center border-t border-[#222] pt-4 ${
-              onPrevious && onNext
-                ? "justify-between"
-                : onPrevious
-                  ? "justify-start"
-                  : "justify-end"
-            }`}
-          >
-            {onPrevious ? (
-              <button
-                type="button"
-                aria-label="Previous project"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  onPrevious();
-                }}
-                className={navArrowButtonClass}
-              >
-                <ChevronIcon direction="left" />
-              </button>
-            ) : null}
-            {onNext ? (
-              <button
-                type="button"
-                aria-label="Next project"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  onNext();
-                }}
-                className={navArrowButtonClass}
-              >
-                <ChevronIcon direction="right" />
-              </button>
-            ) : null}
+        {showNav ? (
+          <div className="mt-6 flex items-center justify-between border-t border-[#222] pt-4 lg:hidden">
+            <div className="flex flex-1 justify-start">
+              {onPrevious ? (
+                <button
+                  type="button"
+                  aria-label="Previous project"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onPrevious();
+                  }}
+                  className={navArrowButtonClass}
+                >
+                  <ChevronIcon direction="left" />
+                </button>
+              ) : (
+                <span className={mobileNavSlotClass} aria-hidden />
+              )}
+            </div>
+            <div className="flex flex-1 justify-end">
+              {onNext ? (
+                <button
+                  type="button"
+                  aria-label="Next project"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onNext();
+                  }}
+                  className={navArrowButtonClass}
+                >
+                  <ChevronIcon direction="right" />
+                </button>
+              ) : (
+                <span className={mobileNavSlotClass} aria-hidden />
+              )}
+            </div>
           </div>
-        )}
+        ) : null}
+          </div>
+
+          {showNav ? (
+            <div
+              className={`${desktopNavRailClass} border-l`}
+              aria-hidden={!onNext}
+            >
+              {onNext ? (
+                <button
+                  type="button"
+                  aria-label="Next project"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onNext();
+                  }}
+                  className={`${navArrowButtonClassDesktop} lg:px-0`}
+                >
+                  <ChevronIcon direction="right" />
+                </button>
+              ) : (
+                <span className={desktopNavPlaceholderClass} aria-hidden />
+              )}
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );
