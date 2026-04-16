@@ -37,7 +37,7 @@ export default function ProjectsGrid() {
     <div className="bg-[#0D0D0D] min-h-screen text-[#F0EDE6] font-sans pb-12">
       {/* Header */}
       <header className="flex justify-between items-end px-10 pt-10 pb-7 border-b border-[#222]">
-        <h1 className="font-syne font-extrabold text-[40px] leading-[1.05] tracking-tight">
+        <h1 className="font-syne font-extrabold text-[40px] leading-[1.05] tracking-tight text-[#FAF9F6]">
           LISA<span className="text-[#D85A30]">.</span>
           <br />
           BALLARD
@@ -47,7 +47,7 @@ export default function ProjectsGrid() {
             <span className="w-1.5 h-1.5 rounded-full bg-[#1D9E75] animate-pulse" />
             Available for work
           </div>
-          <p className="text-[13px] text-[#555] leading-relaxed">
+          <p className="text-[13px] text-[#b8b6b1] leading-relaxed">
             Senior full-stack engineer
             <br />
             TypeScript · React · GraphQL · PostgreSQL
@@ -57,7 +57,7 @@ export default function ProjectsGrid() {
 
       {/* Grid */}
       <main className="px-10 pt-8">
-        <p className="text-[11px] font-medium tracking-widest uppercase text-[#444] mb-5">
+        <p className="text-[11px] font-medium tracking-widest uppercase text-[#8f8d89] mb-5">
           Selected work and side projects
         </p>
 

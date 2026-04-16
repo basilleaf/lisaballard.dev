@@ -38,7 +38,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <h2 className="font-syne font-bold text-[17px] text-[#F0EDE6] tracking-tight leading-tight">
           {project.title}
         </h2>
-        <p className="text-[12.5px] text-[#555] leading-relaxed">{project.description}</p>
+        <p className="text-[12.5px] text-[#b8b6b1] leading-relaxed">{project.description}</p>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-1.5 mt-1">
