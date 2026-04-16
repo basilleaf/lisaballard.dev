@@ -6,23 +6,40 @@ export type TagColor =
   | "purple"
   | "pink"
   | "green"
-  | "gray";
+  | "gray"
+  | "yellow"
+  | "orange"
+  | "IndianRed"
+  | "DarkKhaki"
+  | "SeaGreen"
+  | "cyan"
+  | "lime"
+  | "indigo"
+  | "rose"
+  | "sky"
+  | "mint"
+  | "lavender"
+  | "gold";
 
 export const labelColors: Record<string, TagColor> = {
   "Anthropic API": "teal",
-  "D3.js": "pink",
+  BeautifulSoup: "pink",
   Flask: "blue",
   GraphQL: "purple",
   IoT: "gray",
-  Leaflet: "green",
+  Leaflet: "cyan",
   LoRa: "purple",
   Meshtastic: "blue",
   "Next.js": "coral",
-  PostgreSQL: "gray",
-  pgvector: "green",
-  Python: "green",
+  PostgreSQL: "sky",
+  MySQL: "sky",
+  Jekyll: "DarkKhaki",
+  Wordpress: "lavender",
   React: "blue",
   Tailwind: "amber",
+  Python: "green",
+  Javascript: "gold",
+  Django: "blue",
 };
 
 export const DEFAULT_TAG_COLOR: TagColor = "gray";
@@ -36,4 +53,17 @@ export const tagStyles: Record<TagColor, string> = {
   pink: "bg-[#1a0811] text-[#ED93B1]",
   green: "bg-[#0d1a06] text-[#97C459]",
   gray: "bg-[#181818] text-[#B4B2A9]",
+  yellow: "bg-[#2a2406] text-[#f3e48a]",
+  orange: "bg-[#2a1406] text-[#f5b07a]",
+  IndianRed: "bg-[#2a0d10] text-[#e6a29d]",
+  DarkKhaki: "bg-[#242012] text-[#d7cd8c]",
+  SeaGreen: "bg-[#071c15] text-[#88d0b2]",
+  cyan: "bg-[#071d22] text-[#87d7e4]",
+  lime: "bg-[#172106] text-[#b8db74]",
+  indigo: "bg-[#0e1028] text-[#adb5f0]",
+  rose: "bg-[#250a14] text-[#f2a2be]",
+  sky: "bg-[#071926] text-[#95c8f2]",
+  mint: "bg-[#081d12] text-[#8dd9b5]",
+  lavender: "bg-[#170f26] text-[#cfbaf6]",
+  gold: "bg-[#2a1d08] text-[#f3cb7a]",
 };

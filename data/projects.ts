@@ -13,42 +13,74 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: "Life Under the Ice",
-    description:
-      "Interactive research map deployed to a kiosk at McMurdo Station, Antarctica. Lead developer.",
+    description: "Interactive map of microscopic critters.",
     image: "/screenshots/luti-homepage.png",
     href: "https://lifeundertheice.org",
     tags: [{ label: "React" }, { label: "Leaflet" }],
   },
   {
     title: "Space Probes",
-    description:
-      "Humanity's reach into the solar system. Covered by Wired & Popular Mechanics.",
+    description: "Humanity's active space probes beyond Earth orbit.",
     image: "/screenshots/spaceprobes-homepage.png",
-    tags: [{ label: "React" }, { label: "Flask" }, { label: "Python" }],
+    tags: [{ label: "Python" }, { label: "Flask" }, { label: "Jekyll" }],
   },
   {
-    title: "Lit Flashcards",
+    title: "Spacehack",
+    description: "A directory of ways to participate in space exploration.",
+    image: "/screenshots/spacehack-homepage.png",
+    tags: [{ label: "Javascript" }, { label: "Wordpress" }],
+  },
+  {
+    title: "OPUS",
+    description: "NASA Planetary Data System multimission search UI",
+    image: "/screenshots/opus-gallery.png",
+    tags: [{ label: "Django" }, { label: "Python" }, { label: "Javascript" }],
+  },
+  // {
+  //   title: "CV Zoomies",
+  //   description:
+  //     "Meshtastic LoRa mesh network node, wall-mounted in Castro Valley.",
+  //   image: "/screenshots/cv-zoomies.png",
+  //   tags: [{ label: "Meshtastic" }, { label: "LoRa" }, { label: "IoT" }],
+  // },
+  {
+    title: "Seahack",
+    description: "A directory of ways to participate in sea exploration.",
+    image: "/screenshots/seahack-homepage.png",
+    tags: [{ label: "Javascript" }, { label: "Jekyll" }],
+  },
+  {
+    title: "Daily Rings",
     description:
-      "RAG-powered flashcard generator for classic literature using Project Gutenberg texts.",
-    image: "/screenshots/lit-flashcards.png",
-    tags: [{ label: "Anthropic API" }, { label: "pgvector" }, { label: "Next.js" }],
+      "Daily posts from NASA's Planetary Ring Systems press release images",
+    image: "/screenshots/daily-rings-homepage.png",
+    tags: [
+      { label: "Django" },
+      { label: "Python" },
+      { label: "BeautifulSoup" },
+      { label: "MySQL" },
+    ],
   },
   {
-    title: "This Site",
-    description: "Portfolio built with Next.js + Tailwind, deployed to Vercel.",
-    image: "/screenshots/this-site.png",
-    tags: [{ label: "Next.js" }, { label: "Tailwind" }, { label: "Vercel" }],
+    title: "Mars from Space",
+    description: "Images from the Mars Reconnaissance Orbiter",
+    image: "/screenshots/mars-from-space-homepage.png",
+    tags: [
+      { label: "Python" },
+      { label: "BeautifulSoup" },
+      { label: "Wordpress" },
+    ],
   },
   {
-    title: "CV Zoomies",
-    description: "Meshtastic LoRa mesh network node, wall-mounted in Castro Valley.",
-    image: "/screenshots/cv-zoomies.png",
-    tags: [{ label: "Meshtastic" }, { label: "LoRa" }, { label: "IoT" }],
+    title: "Rocket Weekly tumblr bot",
+    description: "Weekly tumblr post of rocket images from NASA",
+    image: "/screenshots/rocket-weekly.png",
+    tags: [{ label: "Python" }, { label: "BeautifulSoup" }],
   },
   {
-    title: "Zappa Graph",
-    description: "Musician relationship graph for Frank Zappa's extended network.",
-    image: "/screenshots/zappa-graph.png",
-    tags: [{ label: "D3.js" }, { label: "GraphQL" }, { label: "PostgreSQL" }],
+    title: "Sunglint tumblr bot",
+    description: "Weekly tumblr post of sun glint images from NASA",
+    image: "/screenshots/sunglint.png",
+    tags: [{ label: "Python" }, { label: "BeautifulSoup" }],
   },
 ];
