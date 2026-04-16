@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
-import { getProjectBySlug, projects } from "@/data/projects";
+import { getProjectBySlug, projects, projectSlug } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import ProjectModal from "@/components/ProjectModal";
 
@@ -19,6 +19,18 @@ export default function ProjectsGrid() {
 
   const closeModal = () => {
     router.push("/");
+  };
+
+  const selectedIndex = selectedProject
+    ? projects.findIndex(
+        (p) => projectSlug(p) === projectSlug(selectedProject),
+      )
+    : -1;
+
+  const goToProjectAt = (index: number) => {
+    const p = projects[index];
+    if (!p) return;
+    router.push(`/project/${projectSlug(p)}`);
   };
 
   return (
@@ -58,7 +70,20 @@ export default function ProjectsGrid() {
       </main>
 
       {selectedProject && (
-        <ProjectModal project={selectedProject} onClose={closeModal} />
+        <ProjectModal
+          project={selectedProject}
+          onClose={closeModal}
+          onPrevious={
+            selectedIndex > 0
+              ? () => goToProjectAt(selectedIndex - 1)
+              : undefined
+          }
+          onNext={
+            selectedIndex >= 0 && selectedIndex < projects.length - 1
+              ? () => goToProjectAt(selectedIndex + 1)
+              : undefined
+          }
+        />
       )}
 
       {/* Footer */}

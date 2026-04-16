@@ -14,7 +14,27 @@ import Link from "next/link";
 type ProjectModalProps = {
   project: Project;
   onClose: () => void;
+  onPrevious?: () => void;
+  onNext?: () => void;
 };
+
+function ChevronIcon({ direction }: { direction: "left" | "right" }) {
+  const d = direction === "left" ? "M15 18l-6-6 6-6" : "M9 18l6-6-6-6";
+  return (
+    <svg
+      className="h-7 w-7 sm:h-8 sm:w-8"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.25"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d={d} />
+    </svg>
+  );
+}
 
 function renderTextWithLinks(text: string) {
   const linkPattern = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
@@ -52,17 +72,32 @@ function renderTextWithLinks(text: string) {
   return parts.length > 0 ? parts : [text];
 }
 
-export default function ProjectModal({ project, onClose }: ProjectModalProps) {
+export default function ProjectModal({
+  project,
+  onClose,
+  onPrevious,
+  onNext,
+}: ProjectModalProps) {
   useEffect(() => {
-    function handleEscape(event: KeyboardEvent) {
+    function handleKey(event: KeyboardEvent) {
       if (event.key === "Escape") {
         onClose();
+        return;
+      }
+      if (event.key === "ArrowLeft" && onPrevious) {
+        event.preventDefault();
+        onPrevious();
+        return;
+      }
+      if (event.key === "ArrowRight" && onNext) {
+        event.preventDefault();
+        onNext();
       }
     }
 
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, [onClose]);
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [onClose, onPrevious, onNext]);
 
   const modalBullets =
     project.bullets && project.bullets.length > 0
@@ -72,6 +107,9 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           `Built with ${project.tags.map((tag) => tag.label).join(", ")}.`,
           "Add more project details here.",
         ];
+
+  const navArrowButtonClass =
+    "inline-flex min-h-14 min-w-14 shrink-0 items-center justify-center rounded-lg px-10 py-6 text-[#4a4a4a] opacity-60 transition-[opacity,color] hover:text-[#8a8a8a] hover:opacity-100 sm:min-h-16 sm:min-w-16 sm:px-12 sm:py-7";
 
   return (
     <div
@@ -177,7 +215,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </a>
             )}
 
-            <div className={`"mt-5" border-t border-[#1f1f1f] pt-3`}>
+            <div className="mt-5 border-t border-[#1f1f1f] pt-3">
               {project?.["more-info-text"] && (
                 <p className="mt-1 text-xs leading-relaxed text-[#7a7a7a]">
                   {project?.["more-info-text"]}
@@ -194,6 +232,45 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
           </div>
         </div>
+
+        {(onPrevious || onNext) && (
+          <div
+            className={`mt-6 flex items-center border-t border-[#222] pt-4 ${
+              onPrevious && onNext
+                ? "justify-between"
+                : onPrevious
+                  ? "justify-start"
+                  : "justify-end"
+            }`}
+          >
+            {onPrevious ? (
+              <button
+                type="button"
+                aria-label="Previous project"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onPrevious();
+                }}
+                className={navArrowButtonClass}
+              >
+                <ChevronIcon direction="left" />
+              </button>
+            ) : null}
+            {onNext ? (
+              <button
+                type="button"
+                aria-label="Next project"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onNext();
+                }}
+                className={navArrowButtonClass}
+              >
+                <ChevronIcon direction="right" />
+              </button>
+            ) : null}
+          </div>
+        )}
       </div>
     </div>
   );
