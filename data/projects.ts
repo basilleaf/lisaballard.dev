@@ -31,6 +31,23 @@ export function projectSlug(project: Project): string {
 
 export const projects: Project[] = [
   {
+    title: "Portfolio site",
+    description: "This Website! A vibe coded basic portfolio",
+    image: "/screenshots/portfolio-site-homepage.png",
+    "detail-image-top": "/screenshots/portfolio-site-homepage.png",
+    "detail-image-bottom": "/screenshots/portfolio-site-detail.png",
+    "detail-image-top-alt": "Portfolio homepage screenshot",
+    "detail-image-bottom-alt": "Portfolio detail screenshot",
+    tags: [{ label: "Next.js" }, { label: "Cursor" }, { label: "Claude" }],
+    bullets: [
+      "Next.js Portfolio coded with Cursor and Claude",
+      "Mobile responsive design",
+      "Next and Previous buttons for project navigation",
+    ],
+    "more-info-text": "credit: Ariel Waldman",
+    "more-info-link": "https://arielwaldman.com/",
+  },
+  {
     title: "Life Under the Ice",
     description:
       "Interactive map of microscopic creatures collected in Antarctica..",
@@ -163,7 +180,6 @@ export const projects: Project[] = [
     "more-info-text": "credit: Ariel Waldman",
     "more-info-link": "https://arielwaldman.com/",
   },
-
   {
     title: "Rocket Weekly tumblr bot",
     description: "Weekly tumblr post of rocket-related images from NASA",

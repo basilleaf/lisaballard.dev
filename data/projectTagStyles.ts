@@ -37,9 +37,11 @@ export const labelColors: Record<string, TagColor> = {
   Wordpress: "lavender",
   React: "blue",
   Tailwind: "amber",
-  Python: "green",
+  python: "green",
   Javascript: "gold",
   Django: "blue",
+  Cursor: "purple",
+  Claude: "sky",
 };
 
 export const DEFAULT_TAG_COLOR: TagColor = "gray";
