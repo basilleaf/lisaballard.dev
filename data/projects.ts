@@ -42,7 +42,7 @@ export const projects: Project[] = [
     bullets: [
       "Next.js Portfolio built with Cursor and Claude",
       "Mobile responsive design",
-      "Next and Previous buttons for project navigation",
+      "Next and Previous buttons and mobile swipe gestures for project navigation",
       "Distinct URL for each project",
     ],
     "more-info-text": "credit: Ariel Waldman",
