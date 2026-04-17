@@ -40,7 +40,7 @@ export default function ProjectsGrid() {
           <br />
           BALLARD
         </h1>
-        <div className="text-right">
+        <div className="text-right pl-6">
           <div className="flex items-center justify-end gap-1.5 text-[#1D9E75] text-xs font-medium mb-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1D9E75] animate-pulse" />
             Available for work
@@ -48,7 +48,7 @@ export default function ProjectsGrid() {
           <p className="text-[13px] text-[#b8b6b1] leading-relaxed">
             Senior full-stack engineer
             <br />
-            TypeScript · React · GraphQL · PostgreSQL
+            TypeScript · React · GraphQL
           </p>
         </div>
       </header>

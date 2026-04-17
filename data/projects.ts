@@ -45,8 +45,6 @@ export const projects: Project[] = [
       "Next and Previous buttons and mobile swipe gestures for project navigation",
       "Distinct URL for each project",
     ],
-    "more-info-text": "credit: Ariel Waldman",
-    "more-info-link": "https://arielwaldman.com/",
   },
   {
     title: "Life Under the Ice",
@@ -60,7 +58,7 @@ export const projects: Project[] = [
     href: "https://lifeundertheice.org",
     tags: [{ label: "React" }, { label: "Leaflet" }],
     bullets: [
-      "Interactive Leaflet map with HLS streaming video tile overlays",
+      "Leaflet map with HLS streaming video tile overlays",
       "Interactive content elements with React",
       "Keyboard Accessible",
       "Deployed to a kiosk at McMurdo Station, Antarctica",
@@ -149,7 +147,7 @@ export const projects: Project[] = [
       { label: "Wordpress" },
     ],
     bullets: [
-      "Data Scraped from NASA HiRise website using Python & BeautifulSoup",
+      "Data Scraped from NASA HiRise website using Python & Beautiful Soup",
       "Wordpress posts generated via python script",
       "Created at Mars Hackathon",
     ],
@@ -194,7 +192,7 @@ export const projects: Project[] = [
     "detail-image-top-alt": "Rocket Weekly Tumblr bot screenshot",
     tags: [{ label: "Python" }, { label: "BeautifulSoup" }],
     bullets: [
-      "Data scraped from NASA using Python & BeautifulSoup",
+      "Data scraped from NASA using Python & Beautiful Soup",
       "Automated tumblr posting with Python script",
     ],
   },
@@ -206,7 +204,7 @@ export const projects: Project[] = [
     "detail-image-top-alt": "Sunglint Tumblr bot screenshot",
     tags: [{ label: "Python" }, { label: "BeautifulSoup" }],
     bullets: [
-      "Data scraped from NASA using Python & BeautifulSoup",
+      "Data scraped from NASA using Python & Beautiful Soup",
       "Automated tumblr posting with Python script",
     ],
   },
