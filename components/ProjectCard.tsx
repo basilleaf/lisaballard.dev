@@ -4,7 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { projectSlug, type Project } from "@/data/projects";
-import { DEFAULT_TAG_COLOR, labelColors, tagStyles } from "@/data/projectTagStyles";
+import {
+  DEFAULT_TAG_COLOR,
+  labelColors,
+  tagStyles,
+} from "@/data/projectTagStyles";
 
 type ProjectCardProps = {
   project: Project;
@@ -15,7 +19,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <Link
       href={`/project/${projectSlug(project)}`}
       scroll={false}
-      className="group relative flex flex-col gap-0 sm:gap-4 bg-[#111] p-0 sm:p-6 cursor-pointer transition-colors duration-200 hover:bg-[#161616] text-left"
+      className="group relative flex flex-col gap-0 sm:gap-4 bg-[#111] p-0 sm:p-6 m-0 sm:m-2 rounded-small sm:rounded-lg cursor-pointer transition-colors duration-200 hover:bg-[#161616] text-left"
     >
       {/* Arrow */}
       <span className="absolute top-4 right-4 sm:top-5 sm:right-6 z-10 text-sm text-[#333] transition-all duration-200 group-hover:text-[#F0EDE6] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -38,7 +42,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <h2 className="font-syne font-bold text-[17px] text-[#F0EDE6] tracking-tight leading-tight">
           {project.title}
         </h2>
-        <p className="text-[12.5px] text-[#b8b6b1] leading-relaxed">{project.description}</p>
+        <p className="text-[12.5px] text-[#b8b6b1] leading-relaxed">
+          {project.description}
+        </p>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-1.5 mt-1">

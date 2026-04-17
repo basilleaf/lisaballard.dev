@@ -32,9 +32,9 @@ export default function ProjectsGrid() {
   };
 
   return (
-    <div className="bg-[#0D0D0D] min-h-screen text-[#F0EDE6] font-sans pb-12">
+    <div className="min-h-screen text-[#F0EDE6] font-sans pb-12">
       {/* Header */}
-      <header className="flex justify-between items-end px-4 sm:px-10 pt-10 pb-7 border-b border-[#222]">
+      <header className="flex justify-between items-end px-4 sm:px-12 pt-10 pb-7 border-b border-[#222]">
         <h1 className="font-syne font-extrabold text-[40px] leading-[1.05] tracking-tight text-[#FAF9F6]">
           LISA<span className="text-[#D85A30]">.</span>
           <br />
@@ -55,12 +55,12 @@ export default function ProjectsGrid() {
 
       {/* Grid — edge-to-edge on small screens */}
       <main className="px-0 sm:px-10 pt-8">
-        <p className="text-[11px] font-medium tracking-widest uppercase text-[#8f8d89] mb-5 px-4 sm:px-0">
+        <p className="text-[11px] font-medium tracking-widest uppercase text-[#8f8d89] mb-5 px-4 sm:px-2">
           Selected work and side projects
         </p>
 
         {/* Hairline-divided grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-[#1a1a1a] rounded-none sm:rounded-2xl overflow-hidden divide-x divide-y divide-[#1a1a1a]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 rounded-none sm:rounded-2xl overflow-hidden divide-x divide-y divide-[#1a1a1a]">
           {projects.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}
@@ -103,7 +103,7 @@ export default function ProjectsGrid() {
             href={link.href}
             // mailto: is often rewritten (e.g. Gmail compose) by extensions before hydrate
             suppressHydrationWarning={link.href.startsWith("mailto:")}
-            className="text-[13px] text-[#b8b6b1] hover:text-[#F0EDE6] transition-colors duration-150"
+            className="text-[18px] text-[#0e0018] hover:text-[#5d376c] transition-colors duration-150"
           >
             {link.label}
           </a>
