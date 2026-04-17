@@ -32,7 +32,7 @@ export function projectSlug(project: Project): string {
 export const projects: Project[] = [
   {
     title: "Portfolio site",
-    description: "This Website - A vibe coded basic portfolio",
+    description: "This Website - vibe coded basic portfolio",
     image: "/screenshots/portfolio-site-homepage.png",
     "detail-image-top": "/screenshots/portfolio-site-homepage.png",
     "detail-image-bottom": "/screenshots/portfolio-site-detail.png",

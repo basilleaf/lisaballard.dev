@@ -34,7 +34,7 @@ export default function ProjectsGrid() {
   return (
     <div className="min-h-screen text-[#F0EDE6] font-sans pb-12">
       {/* Header */}
-      <header className="flex justify-between items-end px-4 sm:px-12 pt-10 pb-7 border-b border-[#222]">
+      <header className="flex justify-between items-end px-5 sm:px-12 pt-10 pb-7 border-b border-[#222]">
         <h1 className="font-syne font-extrabold text-[40px] leading-[1.05] tracking-tight text-[#FAF9F6]">
           LISA<span className="text-[#D85A30]">.</span>
           <br />

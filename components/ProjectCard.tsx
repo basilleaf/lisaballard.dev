@@ -19,7 +19,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <Link
       href={`/project/${projectSlug(project)}`}
       scroll={false}
-      className="group relative flex flex-col gap-0 sm:gap-4 bg-[#111] p-0 sm:p-6 m-0 sm:m-2 rounded-small sm:rounded-lg cursor-pointer transition-colors duration-200 hover:bg-[#161616] text-left"
+      className="group relative flex flex-col gap-0 sm:gap-4 bg-[#111] p-0 sm:p-5 m-0 sm:m-1 rounded-small sm:rounded-lg cursor-pointer transition-colors duration-200 hover:bg-[#161616] text-left"
     >
       {/* Arrow */}
       <span className="absolute top-4 right-4 sm:top-5 sm:right-6 z-10 text-sm text-[#333] transition-all duration-200 group-hover:text-[#F0EDE6] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -27,7 +27,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </span>
 
       {/* Screenshot — full-bleed width on small screens */}
-      <div className="relative w-full aspect-video rounded-none sm:rounded-lg overflow-hidden bg-[#1a1a1a]">
+      <div className="relative w-full aspect-video rounded-none overflow-hidden bg-[#1a1a1a]">
         <Image
           src={project.image}
           alt={project.title}
