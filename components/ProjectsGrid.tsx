@@ -56,7 +56,7 @@ export default function ProjectsGrid() {
       {/* Grid — edge-to-edge on small screens */}
       <main className="px-0 sm:px-10 pt-8">
         <p className="text-[11px] font-medium tracking-widest uppercase text-[#8f8d89] mb-5 px-4 sm:px-2">
-          Selected work and side projects
+          Selected work
         </p>
 
         {/* Hairline-divided grid */}
