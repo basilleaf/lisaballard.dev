@@ -41,11 +41,11 @@ export default function ProjectsGrid() {
           BALLARD
         </h1>
         <div className="text-right pl-6">
-          <div className="flex items-center justify-end gap-1.5 text-[#1D9E75] text-xs font-medium mb-1.5">
+          <div className="flex items-center justify-end gap-1.5 text-[#1D9E75] text-sm font-medium mb-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1D9E75] animate-pulse" />
             Available for work
           </div>
-          <p className="text-[13px] text-[#b8b6b1] leading-relaxed">
+          <p className="text-[15px] text-[#b8b6b1] leading-relaxed">
             Senior full-stack engineer
             <br />
             TypeScript · React · GraphQL
@@ -85,7 +85,7 @@ export default function ProjectsGrid() {
       )}
 
       {/* Footer */}
-      <footer className="flex gap-6 px-10 mt-8 pt-7 border-t border-[#1a1a1a] flex-wrap">
+      <footer className="flex justify-center gap-6 px-10 mt-8 pt-7 border-t border-[#1a1a1a] flex-wrap text-center">
         {[
           { label: "GitHub", href: "https://github.com/basilleaf" },
           {
