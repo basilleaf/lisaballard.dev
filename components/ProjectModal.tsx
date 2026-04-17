@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { type ReactNode, useEffect } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 
 import { type Project } from "@/data/projects";
 import {
@@ -78,6 +78,47 @@ export default function ProjectModal({
   onPrevious,
   onNext,
 }: ProjectModalProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const showNav = Boolean(onPrevious || onNext);
+    if (!showNav) return;
+
+    const el = panelRef.current;
+    if (!el) return;
+
+    let cancelled = false;
+    const mq = window.matchMedia("(max-width: 1023px)");
+    let hammer: HammerManager | null = null;
+
+    const attach = async () => {
+      hammer?.destroy();
+      hammer = null;
+      if (!mq.matches || cancelled) return;
+
+      const Hammer = (await import("hammerjs")).default;
+      if (cancelled || !mq.matches) return;
+
+      const h = new Hammer(el);
+      h.get("swipe").set({ direction: Hammer.DIRECTION_HORIZONTAL });
+      h.on("swipeleft", () => {
+        onNext?.();
+      });
+      h.on("swiperight", () => {
+        onPrevious?.();
+      });
+      hammer = h;
+    };
+
+    void attach();
+    mq.addEventListener("change", attach);
+    return () => {
+      cancelled = true;
+      mq.removeEventListener("change", attach);
+      hammer?.destroy();
+    };
+  }, [onPrevious, onNext]);
+
   useEffect(() => {
     function handleKey(event: KeyboardEvent) {
       if (event.key === "Escape") {
@@ -137,7 +178,10 @@ export default function ProjectModal({
         className="mx-auto mt-0 w-full max-w-6xl sm:mt-8 lg:max-w-7xl xl:max-w-[min(92vw,1400px)]"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="flex min-h-dvh w-full flex-col overflow-hidden bg-[#121212] p-0 pb-safe sm:min-h-0 sm:rounded-2xl sm:border sm:border-[#232323] lg:min-h-0 lg:flex-row lg:items-stretch">
+        <div
+          ref={panelRef}
+          className="touch-pan-y flex min-h-dvh w-full flex-col overflow-hidden bg-[#121212] p-0 pb-safe sm:min-h-0 sm:rounded-2xl sm:border sm:border-[#232323] lg:min-h-0 lg:flex-row lg:items-stretch"
+        >
           {showNav ? (
             <div
               className={`${desktopNavRailClass} border-r${onPrevious ? " cursor-pointer" : ""}`}

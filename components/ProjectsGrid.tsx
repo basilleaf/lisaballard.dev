@@ -101,6 +101,8 @@ export default function ProjectsGrid() {
           <a
             key={link.label}
             href={link.href}
+            // mailto: is often rewritten (e.g. Gmail compose) by extensions before hydrate
+            suppressHydrationWarning={link.href.startsWith("mailto:")}
             className="text-[13px] text-[#b8b6b1] hover:text-[#F0EDE6] transition-colors duration-150"
           >
             {link.label}
