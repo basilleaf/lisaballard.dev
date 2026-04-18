@@ -56,8 +56,8 @@ const baseProject: Project = {
   title: "Test Project",
   description: "A test description for the modal.",
   image: "/img.png",
-  "detail-image-top": "/top.png",
-  "detail-image-top-alt": "Top alt",
+  "detail-image-first": "/top.png",
+  "detail-image-first-alt": "Top alt",
   tags: [{ label: "Next.js" }],
 };
 

@@ -78,20 +78,20 @@ export default function ProjectModal({
                 <div className="flex flex-col gap-4">
                   <div className="relative aspect-video overflow-hidden rounded-lg border border-[#252525] bg-[#1a1a1a]">
                     <Image
-                      src={project["detail-image-top"]}
-                      alt={project["detail-image-top-alt"]}
+                      src={project["detail-image-first"]}
+                      alt={project["detail-image-first-alt"]}
                       fill
                       className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>
-                  {project["detail-image-bottom"] ? (
+                  {project["detail-image-second"] ? (
                     <div className="relative aspect-video overflow-hidden rounded-lg border border-[#252525] bg-[#1a1a1a]">
                       <Image
-                        src={project["detail-image-bottom"]}
+                        src={project["detail-image-second"]}
                         alt={
-                          project["detail-image-bottom-alt"] ??
-                          project["detail-image-top-alt"]
+                          project["detail-image-second-alt"] ??
+                          project["detail-image-first-alt"]
                         }
                         fill
                         className="object-cover"

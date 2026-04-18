@@ -6,10 +6,10 @@ export type Project = {
   title: string;
   description: string;
   image: string; // path under /public, e.g. "/screenshots/life-under-ice.png"
-  "detail-image-top": string;
-  "detail-image-bottom"?: string;
-  "detail-image-top-alt": string;
-  "detail-image-bottom-alt"?: string;
+  "detail-image-first": string;
+  "detail-image-second"?: string;
+  "detail-image-first-alt": string;
+  "detail-image-second-alt"?: string;
   tags: Tag[];
   /** Plain text; use `[label](https://url)` anywhere in a bullet for an inline link. */
   bullets?: string[];
@@ -35,10 +35,10 @@ export const projects: Project[] = [
     title: "Flash Card App",
     description: "Subscription Flashcard App with free and pro plans",
     image: "/screenshots/flashy-cardy-course.png",
-    "detail-image-top": "/screenshots/flashy-cardy-course.png",
-    "detail-image-bottom": "/screenshots/flashy-cardy-course-detail.png",
-    "detail-image-top-alt": "Flashcard app homepage screenshot",
-    "detail-image-bottom-alt": "Flashcard app detail screenshot",
+    "detail-image-first": "/screenshots/flashy-cardy-course.png",
+    "detail-image-second": "/screenshots/flashy-cardy-course-detail.png",
+    "detail-image-first-alt": "Flashcard app homepage screenshot",
+    "detail-image-second-alt": "Flashcard app detail screenshot",
     tags: [
       { label: "Next.js" },
       { label: "Cursor" },
@@ -60,10 +60,10 @@ export const projects: Project[] = [
     title: "Portfolio site",
     description: "This Website - vibe coded basic portfolio",
     image: "/screenshots/portfolio-site-homepage.png",
-    "detail-image-top": "/screenshots/portfolio-site-homepage.png",
-    "detail-image-bottom": "/screenshots/portfolio-site-detail.png",
-    "detail-image-top-alt": "Portfolio homepage screenshot",
-    "detail-image-bottom-alt": "Portfolio detail screenshot",
+    "detail-image-first": "/screenshots/portfolio-site-homepage.png",
+    "detail-image-second": "/screenshots/portfolio-site-detail.png",
+    "detail-image-first-alt": "Portfolio homepage screenshot",
+    "detail-image-second-alt": "Portfolio detail screenshot",
     tags: [{ label: "Next.js" }, { label: "Cursor" }, { label: "Claude" }],
     bullets: [
       "Next.js Portfolio built with Cursor and Claude",
@@ -78,10 +78,10 @@ export const projects: Project[] = [
     description:
       "Interactive map of microscopic creatures collected in Antarctica.",
     image: "/screenshots/luti-homepage.png",
-    "detail-image-top": "/screenshots/luti-homepage.png",
-    "detail-image-bottom": "/screenshots/luti-detail.png",
-    "detail-image-top-alt": "Life Under the Ice homepage screenshot",
-    "detail-image-bottom-alt": "Life Under the Ice map view screenshot",
+    "detail-image-first": "/screenshots/luti-homepage.png",
+    "detail-image-second": "/screenshots/luti-detail.png",
+    "detail-image-first-alt": "Life Under the Ice homepage screenshot",
+    "detail-image-second-alt": "Life Under the Ice map view screenshot",
     href: "https://lifeundertheice.org",
     tags: [{ label: "React" }, { label: "Leaflet" }],
     bullets: [
@@ -98,10 +98,10 @@ export const projects: Project[] = [
     title: "Space Probes",
     description: "Humanity's active space probes beyond Earth orbit.",
     image: "/screenshots/spaceprobes-homepage.png",
-    "detail-image-top": "/screenshots/spaceprobes-homepage.png",
-    "detail-image-bottom": "/screenshots/spaceprobes-detail.png",
-    "detail-image-top-alt": "Space Probes homepage screenshot",
-    "detail-image-bottom-alt": "Space Probes content screenshot",
+    "detail-image-first": "/screenshots/spaceprobes-homepage.png",
+    "detail-image-second": "/screenshots/spaceprobes-detail.png",
+    "detail-image-first-alt": "Space Probes homepage screenshot",
+    "detail-image-second-alt": "Space Probes content screenshot",
     href: "https://spaceprob.es",
     tags: [{ label: "Python" }, { label: "Flask" }, { label: "Jekyll" }],
     bullets: [
@@ -118,8 +118,8 @@ export const projects: Project[] = [
     description:
       "Daily posts from NASA's Planetary Ring Systems press release images",
     image: "/screenshots/daily-rings-homepage.png",
-    "detail-image-top": "/screenshots/daily-rings-homepage.png",
-    "detail-image-top-alt": "Daily Rings homepage screenshot",
+    "detail-image-first": "/screenshots/daily-rings-homepage.png",
+    "detail-image-first-alt": "Daily Rings homepage screenshot",
     tags: [
       { label: "Django" },
       { label: "Python" },
@@ -137,10 +137,10 @@ export const projects: Project[] = [
     description:
       "NASA Planetary Data System multi-mission search UI. Designed to help researchers and the public discover mission data across multiple planetary datasets",
     image: "/screenshots/opus-gallery.png",
-    "detail-image-top": "/screenshots/opus-gallery.png",
-    "detail-image-bottom": "/screenshots/opus.png",
-    "detail-image-top-alt": "OPUS gallery screenshot",
-    "detail-image-bottom-alt": "OPUS search results screenshot",
+    "detail-image-first": "/screenshots/opus-gallery.png",
+    "detail-image-second": "/screenshots/opus.png",
+    "detail-image-first-alt": "OPUS gallery screenshot",
+    "detail-image-second-alt": "OPUS search results screenshot",
     tags: [
       { label: "Django" },
       { label: "Python" },
@@ -166,10 +166,10 @@ export const projects: Project[] = [
     description:
       "Images and content from Mars Reconnaissance Orbiter HiRise Instrument team",
     image: "/screenshots/mars-from-space-homepage.png",
-    "detail-image-top": "/screenshots/mars-from-space-homepage.png",
-    "detail-image-bottom": "/screenshots/mars-from-space-detail.png",
-    "detail-image-top-alt": "Mars from Space homepage screenshot",
-    "detail-image-bottom-alt": "Mars from Space gallery screenshot",
+    "detail-image-first": "/screenshots/mars-from-space-homepage.png",
+    "detail-image-second": "/screenshots/mars-from-space-detail.png",
+    "detail-image-first-alt": "Mars from Space homepage screenshot",
+    "detail-image-second-alt": "Mars from Space gallery screenshot",
     tags: [
       { label: "Python" },
       { label: "BeautifulSoup" },
@@ -187,10 +187,10 @@ export const projects: Project[] = [
     title: "Spacehack",
     description: "A directory of ways to participate in space exploration.",
     image: "/screenshots/spacehack-homepage.png",
-    "detail-image-top": "/screenshots/spacehack-homepage.png",
-    "detail-image-bottom": "/screenshots/spacehack-detail.png",
-    "detail-image-top-alt": "Spacehack homepage screenshot",
-    "detail-image-bottom-alt": "Spacehack directory screenshot",
+    "detail-image-first": "/screenshots/spacehack-homepage.png",
+    "detail-image-second": "/screenshots/spacehack-detail.png",
+    "detail-image-first-alt": "Spacehack homepage screenshot",
+    "detail-image-second-alt": "Spacehack directory screenshot",
     tags: [{ label: "Javascript" }, { label: "Wordpress" }],
     href: "https://spacehack.org",
     bullets: ["Site built with Jekyll."],
@@ -201,10 +201,10 @@ export const projects: Project[] = [
     title: "Seahack",
     description: "A directory of ways to participate in sea exploration.",
     image: "/screenshots/seahack-homepage.png",
-    "detail-image-top": "/screenshots/seahack-homepage.png",
-    "detail-image-bottom": "/screenshots/seahack-detail.png",
-    "detail-image-top-alt": "Seahack homepage screenshot",
-    "detail-image-bottom-alt": "Seahack directory screenshot",
+    "detail-image-first": "/screenshots/seahack-homepage.png",
+    "detail-image-second": "/screenshots/seahack-detail.png",
+    "detail-image-first-alt": "Seahack homepage screenshot",
+    "detail-image-second-alt": "Seahack directory screenshot",
     tags: [{ label: "Javascript" }, { label: "Jekyll" }],
     bullets: ["Built with JavaScript and Jekyll"],
     "more-info-text": "credit: Ariel Waldman",
@@ -214,8 +214,8 @@ export const projects: Project[] = [
     title: "Rocket Weekly tumblr bot",
     description: "Weekly tumblr post of rocket-related images from NASA",
     image: "/screenshots/rocket-weekly.png",
-    "detail-image-top": "/screenshots/rocket-weekly.png",
-    "detail-image-top-alt": "Rocket Weekly Tumblr bot screenshot",
+    "detail-image-first": "/screenshots/rocket-weekly.png",
+    "detail-image-first-alt": "Rocket Weekly Tumblr bot screenshot",
     tags: [{ label: "Python" }, { label: "BeautifulSoup" }],
     bullets: [
       "Data scraped from NASA using Python & Beautiful Soup",
@@ -226,8 +226,8 @@ export const projects: Project[] = [
     title: "Sunglint tumblr bot",
     description: "Daily tumblr post of sun glint images from NASA",
     image: "/screenshots/sunglint.png",
-    "detail-image-top": "/screenshots/sunglint.png",
-    "detail-image-top-alt": "Sunglint Tumblr bot screenshot",
+    "detail-image-first": "/screenshots/sunglint.png",
+    "detail-image-first-alt": "Sunglint Tumblr bot screenshot",
     tags: [{ label: "Python" }, { label: "BeautifulSoup" }],
     bullets: [
       "Data scraped from NASA using Python & Beautiful Soup",
