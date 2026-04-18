@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { type ReactNode, useEffect, useRef } from "react";
+import { type ReactNode } from "react";
 
+import { useProjectModalInteraction } from "@/hooks/useProjectModalInteraction";
 import { type Project } from "@/data/projects";
 import {
   DEFAULT_TAG_COLOR,
@@ -11,30 +12,14 @@ import {
 } from "@/data/projectTagStyles";
 import Link from "next/link";
 
+import NavButton from "@/components/NavButton";
+
 type ProjectModalProps = {
   project: Project;
   onClose: () => void;
   onPrevious?: () => void;
   onNext?: () => void;
 };
-
-function ChevronIcon({ direction }: { direction: "left" | "right" }) {
-  const d = direction === "left" ? "M15 18l-6-6 6-6" : "M9 18l6-6-6-6";
-  return (
-    <svg
-      className="h-7 w-7 sm:h-8 sm:w-8"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.25"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d={d} />
-    </svg>
-  );
-}
 
 function renderTextWithLinks(text: string) {
   const linkPattern = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
@@ -78,67 +63,11 @@ export default function ProjectModal({
   onPrevious,
   onNext,
 }: ProjectModalProps) {
-  const panelRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const showNav = Boolean(onPrevious || onNext);
-    if (!showNav) return;
-
-    const el = panelRef.current;
-    if (!el) return;
-
-    let cancelled = false;
-    const mq = window.matchMedia("(max-width: 1023px)");
-    let hammer: HammerManager | null = null;
-
-    const attach = async () => {
-      hammer?.destroy();
-      hammer = null;
-      if (!mq.matches || cancelled) return;
-
-      const Hammer = (await import("hammerjs")).default;
-      if (cancelled || !mq.matches) return;
-
-      const h = new Hammer(el);
-      h.get("swipe").set({ direction: Hammer.DIRECTION_HORIZONTAL });
-      h.on("swipeleft", () => {
-        onNext?.();
-      });
-      h.on("swiperight", () => {
-        onPrevious?.();
-      });
-      hammer = h;
-    };
-
-    void attach();
-    mq.addEventListener("change", attach);
-    return () => {
-      cancelled = true;
-      mq.removeEventListener("change", attach);
-      hammer?.destroy();
-    };
-  }, [onPrevious, onNext]);
-
-  useEffect(() => {
-    function handleKey(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        onClose();
-        return;
-      }
-      if (event.key === "ArrowLeft" && onPrevious) {
-        event.preventDefault();
-        onPrevious();
-        return;
-      }
-      if (event.key === "ArrowRight" && onNext) {
-        event.preventDefault();
-        onNext();
-      }
-    }
-
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [onClose, onPrevious, onNext]);
+  const { panelRef } = useProjectModalInteraction({
+    onClose,
+    onPrevious,
+    onNext,
+  });
 
   const modalBullets =
     project.bullets && project.bullets.length > 0
@@ -148,12 +77,6 @@ export default function ProjectModal({
           `Built with ${project.tags.map((tag) => tag.label).join(", ")}.`,
           "Add more project details here.",
         ];
-
-  const navArrowButtonRowBase =
-    "flex min-h-14 w-full flex-1 cursor-pointer items-center rounded-lg px-5 py-3 text-[#4a4a4a] opacity-60 transition-[opacity,color] hover:text-[#8a8a8a] hover:opacity-100 sm:min-h-16 sm:px-6 sm:py-3.5";
-
-  const navArrowButtonClassDesktop =
-    "flex h-full min-h-0 w-full flex-1 cursor-pointer flex-col items-center justify-center rounded-lg p-2 text-[#4a4a4a] opacity-70 transition-[opacity,color] hover:text-[#b5b5b5] hover:opacity-100 lg:p-3";
 
   const desktopNavRailClass =
     "hidden w-[3.25rem] shrink-0 flex flex-col self-stretch border-[#222] lg:flex";
@@ -188,17 +111,14 @@ export default function ProjectModal({
               aria-hidden={!onPrevious}
             >
               {onPrevious ? (
-                <button
-                  type="button"
-                  aria-label="Previous project"
+                <NavButton
+                  direction="left"
+                  variant="desktop"
                   onClick={(event) => {
                     event.stopPropagation();
                     onPrevious();
                   }}
-                  className={navArrowButtonClassDesktop}
-                >
-                  <ChevronIcon direction="left" />
-                </button>
+                />
               ) : (
                 <span className={desktopNavPlaceholderClass} aria-hidden />
               )}
@@ -314,34 +234,28 @@ export default function ProjectModal({
               <div className="mt-6 flex items-center justify-between border-t border-[#222] pt-4 lg:hidden">
                 <div className="flex min-w-0 flex-1 justify-start">
                   {onPrevious ? (
-                    <button
-                      type="button"
-                      aria-label="Previous project"
+                    <NavButton
+                      direction="left"
+                      variant="mobile"
                       onClick={(event) => {
                         event.stopPropagation();
                         onPrevious();
                       }}
-                      className={`${navArrowButtonRowBase} justify-start`}
-                    >
-                      <ChevronIcon direction="left" />
-                    </button>
+                    />
                   ) : (
                     <span className={mobileNavSlotClass} aria-hidden />
                   )}
                 </div>
                 <div className="flex min-w-0 flex-1 justify-end">
                   {onNext ? (
-                    <button
-                      type="button"
-                      aria-label="Next project"
+                    <NavButton
+                      direction="right"
+                      variant="mobile"
                       onClick={(event) => {
                         event.stopPropagation();
                         onNext();
                       }}
-                      className={`${navArrowButtonRowBase} justify-end`}
-                    >
-                      <ChevronIcon direction="right" />
-                    </button>
+                    />
                   ) : (
                     <span className={mobileNavSlotClass} aria-hidden />
                   )}
@@ -356,17 +270,14 @@ export default function ProjectModal({
               aria-hidden={!onNext}
             >
               {onNext ? (
-                <button
-                  type="button"
-                  aria-label="Next project"
+                <NavButton
+                  direction="right"
+                  variant="desktop"
                   onClick={(event) => {
                     event.stopPropagation();
                     onNext();
                   }}
-                  className={navArrowButtonClassDesktop}
-                >
-                  <ChevronIcon direction="right" />
-                </button>
+                />
               ) : (
                 <span className={desktopNavPlaceholderClass} aria-hidden />
               )}
