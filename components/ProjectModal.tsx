@@ -4,14 +4,10 @@ import Image from "next/image";
 
 import { useProjectModalInteraction } from "@/hooks/useProjectModalInteraction";
 import { type Project } from "@/data/projects";
-import {
-  DEFAULT_TAG_COLOR,
-  labelColors,
-  tagStyles,
-} from "@/data/projectTagStyles";
 import Link from "next/link";
 
 import NavButton from "@/components/NavButton";
+import ProjectTagsList from "@/components/ProjectTagsList";
 import { renderTextWithLinks } from "@/utils/renderTextWithLinks";
 
 type ProjectModalProps = {
@@ -97,19 +93,7 @@ export default function ProjectModal({
                 >
                   {project.title}
                 </h2>
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {project.tags.map((tag) => {
-                    const color = labelColors[tag.label] ?? DEFAULT_TAG_COLOR;
-                    return (
-                      <span
-                        key={tag.label}
-                        className={`text-xs font-medium px-2.5 py-0.5 rounded-full tracking-wide ${tagStyles[color]}`}
-                      >
-                        {tag.label}
-                      </span>
-                    );
-                  })}
-                </div>
+                <ProjectTagsList tags={project.tags} variant="modal" />
               </div>
               <button
                 type="button"
