@@ -278,8 +278,8 @@ export default function ProjectModal({
                   {project.description}
                 </p>
                 <ul className="mt-4 list-disc space-y-3 pl-5 text-base leading-relaxed text-[#c8c8c8] sm:text-lg sm:leading-relaxed">
-                  {modalBullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
+                  {modalBullets.map((bullet, index) => (
+                    <li key={index}>{renderTextWithLinks(bullet)}</li>
                   ))}
                 </ul>
 

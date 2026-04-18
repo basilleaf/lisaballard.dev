@@ -11,6 +11,7 @@ export type Project = {
   "detail-image-top-alt": string;
   "detail-image-bottom-alt"?: string;
   tags: Tag[];
+  /** Plain text; use `[label](https://url)` anywhere in a bullet for an inline link. */
   bullets?: string[];
   href?: string;
   "more-info-link"?: string;
@@ -44,6 +45,7 @@ export const projects: Project[] = [
       "Mobile responsive design",
       "Next and Previous buttons and mobile swipe gestures for project navigation",
       "Distinct URL for each project",
+      "[github.com/basilleaf/lisaballard.dev](https://github.com/basilleaf/lisaballard.dev)",
     ],
   },
   {
@@ -62,6 +64,7 @@ export const projects: Project[] = [
       "Interactive content elements with React",
       "Keyboard Accessible",
       "Deployed to a kiosk at McMurdo Station, Antarctica",
+      "[github.com/spacehackers/luti](https://github.com/spacehackers/luti)",
     ],
     "more-info-text": "credit: Ariel Waldman",
     "more-info-link": "https://lifeundertheice.org/about",
