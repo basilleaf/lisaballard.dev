@@ -32,6 +32,31 @@ export function projectSlug(project: Project): string {
 
 export const projects: Project[] = [
   {
+    title: "Flash Card App",
+    description: "Subscription Flashcard App with free and pro plans",
+    image: "/screenshots/flashy-cardy-course.png",
+    "detail-image-top": "/screenshots/flashy-cardy-course.png",
+    "detail-image-bottom": "/screenshots/flashy-cardy-course-detail.png",
+    "detail-image-top-alt": "Flashcard app homepage screenshot",
+    "detail-image-bottom-alt": "Flashcard app detail screenshot",
+    tags: [
+      { label: "Next.js" },
+      { label: "Cursor" },
+      { label: "Claude" },
+      { label: "PostgreSQL" },
+    ],
+    bullets: [
+      "Coursework from [Udemy course](https://www.udemy.com/course/learn-cursor-ai/)",
+      "Extended the coursework by adding full unit test coverage with Vitest",
+      "Built with Next.js, vibe coded with Cursor and Claude ",
+      "Generate cards with ai feature via Claude api integration",
+      "Authentication, authorization, and billing with Clerk",
+      "Relational data using Drizzle ORM and Neon PostgreSQL",
+      "Responsive UI with Shadcn UI & Tailwind CSS",
+      "[github.com/basilleaf/flashy-cardy-course](https://github.com/basilleaf/flashy-cardy-course)",
+    ],
+  },
+  {
     title: "Portfolio site",
     description: "This Website - vibe coded basic portfolio",
     image: "/screenshots/portfolio-site-homepage.png",

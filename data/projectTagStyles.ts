@@ -30,7 +30,7 @@ export const labelColors: Record<string, TagColor> = {
   Leaflet: "cyan",
   LoRa: "purple",
   Meshtastic: "blue",
-  "Next.js": "coral",
+  "Next.js": "SeaGreen",
   PostgreSQL: "sky",
   MySQL: "sky",
   Jekyll: "DarkKhaki",
