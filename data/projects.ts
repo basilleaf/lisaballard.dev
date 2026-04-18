@@ -48,7 +48,7 @@ export const projects: Project[] = [
     bullets: [
       "Coursework from [Udemy course](https://www.udemy.com/course/learn-cursor-ai/)",
       "Extended the coursework by adding full unit test coverage with Vitest",
-      "Built with Next.js, vibe coded with Cursor and Claude ",
+      "Built with Next.js, agentic code assist with Cursor and Claude ",
       "Generate cards with ai feature via Claude api integration",
       "Authentication, authorization, and billing with Clerk",
       "Relational data using Drizzle ORM and Neon PostgreSQL",
@@ -129,13 +129,13 @@ export const projects: Project[] = [
     bullets: [
       "Automated content scraper built with Python & Beautiful Soup.",
       "Website built with Django & MySQL.",
-      "Automated daily posting to social media sites with Python & 3rd party APIs.",
+      "Automated daily posting to social media sites with Python & social APIs.",
     ],
   },
   {
     title: "OPUS",
     description:
-      "NASA Planetary Data System multimission search UI. Designed to help researchers and the public discover mission data across multiple planetary datasets",
+      "NASA Planetary Data System multi-mission search UI. Designed to help researchers and the public discover mission data across multiple planetary datasets",
     image: "/screenshots/opus-gallery.png",
     "detail-image-top": "/screenshots/opus-gallery.png",
     "detail-image-bottom": "/screenshots/opus.png",
@@ -163,7 +163,8 @@ export const projects: Project[] = [
   // },
   {
     title: "Mars from Space",
-    description: "Images from the Mars Reconnaissance Orbiter",
+    description:
+      "Images and content from Mars Reconnaissance Orbiter HiRise Instrument team",
     image: "/screenshots/mars-from-space-homepage.png",
     "detail-image-top": "/screenshots/mars-from-space-homepage.png",
     "detail-image-bottom": "/screenshots/mars-from-space-detail.png",
@@ -205,10 +206,7 @@ export const projects: Project[] = [
     "detail-image-top-alt": "Seahack homepage screenshot",
     "detail-image-bottom-alt": "Seahack directory screenshot",
     tags: [{ label: "Javascript" }, { label: "Jekyll" }],
-    bullets: [
-      "Built with JavaScript and Jekyll",
-      "Highlights opportunities and organizations people can join to get involved in sea exploration",
-    ],
+    bullets: ["Built with JavaScript and Jekyll"],
     "more-info-text": "credit: Ariel Waldman",
     "more-info-link": "https://arielwaldman.com/",
   },
@@ -226,7 +224,7 @@ export const projects: Project[] = [
   },
   {
     title: "Sunglint tumblr bot",
-    description: "Weekly tumblr post of sun glint images from NASA",
+    description: "Daily tumblr post of sun glint images from NASA",
     image: "/screenshots/sunglint.png",
     "detail-image-top": "/screenshots/sunglint.png",
     "detail-image-top-alt": "Sunglint Tumblr bot screenshot",

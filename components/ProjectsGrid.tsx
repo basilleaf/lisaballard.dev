@@ -48,7 +48,7 @@ export default function ProjectsGrid() {
           <p className="text-[15px] text-[#b8b6b1] leading-relaxed">
             Senior full-stack engineer
             <br />
-            TypeScript · React · GraphQL
+            TypeScript · React · GraphQL · SQL
           </p>
         </div>
       </header>
@@ -94,8 +94,8 @@ export default function ProjectsGrid() {
           },
           // { label: "Resume", href: "/resume.pdf" },
           {
-            label: "lisaballard.dev@gmail.com",
-            href: "mailto:lisaballard.dev@gmail.com",
+            label: "lballard.cat@gmail.com",
+            href: "mailto:lballard.cat@gmail.com",
           },
         ].map((link) => (
           <a
