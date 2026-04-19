@@ -20,28 +20,40 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       <div className="flex flex-col gap-4">
-        <div className="relative aspect-video overflow-hidden rounded-lg border border-[#252525] bg-[#1a1a1a]">
+        <a
+          href={project["detail-image-first"]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative block aspect-video cursor-pointer overflow-hidden rounded-lg border border-[#252525] bg-[#1a1a1a] outline-offset-2 focus-visible:outline-2 focus-visible:outline-[#D85A30]"
+          aria-label={`Open full image in new tab: ${project["detail-image-first-alt"]}`}
+        >
           <Image
             src={project["detail-image-first"]}
-            alt={project["detail-image-first-alt"]}
+            alt=""
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
-        </div>
+        </a>
         {project["detail-image-second"] ? (
-          <div className="relative aspect-video overflow-hidden rounded-lg border border-[#252525] bg-[#1a1a1a]">
+          <a
+            href={project["detail-image-second"]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative block aspect-video cursor-pointer overflow-hidden rounded-lg border border-[#252525] bg-[#1a1a1a] outline-offset-2 focus-visible:outline-2 focus-visible:outline-[#D85A30]"
+            aria-label={`Open full image in new tab: ${
+              project["detail-image-second-alt"] ??
+              project["detail-image-first-alt"]
+            }`}
+          >
             <Image
               src={project["detail-image-second"]}
-              alt={
-                project["detail-image-second-alt"] ??
-                project["detail-image-first-alt"]
-              }
+              alt=""
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-          </div>
+          </a>
         ) : (
           <div
             aria-hidden
