@@ -194,7 +194,7 @@ export const projects: Project[] = [
     href: "https://spacehack.org",
     bullets: ["Site built with Jekyll."],
     "more-info-text": "credit: Ariel Waldman",
-    "more-info-link": "spacehack.org/about/",
+    "more-info-link": "http://spacehack.org/about/",
   },
   {
     title: "Seahack",
