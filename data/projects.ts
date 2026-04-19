@@ -46,10 +46,9 @@ export const projects: Project[] = [
       { label: "PostgreSQL" },
     ],
     bullets: [
-      "Coursework from [Udemy course](https://www.udemy.com/course/learn-cursor-ai/)",
+      "Coursework from [Udemy course](https://www.udemy.com/course/learn-cursor-ai/) built with Next.js, agentic code assist with Cursor and Claude",
+      "AI card generation feature via Claude api integration",
       "Extended the coursework by adding full unit test coverage with Vitest",
-      "Built with Next.js, agentic code assist with Cursor and Claude ",
-      "Generate cards with ai feature via Claude api integration",
       "Authentication, authorization, and billing with Clerk",
       "Relational data using Drizzle ORM and Neon PostgreSQL",
       "Responsive UI with Shadcn UI & Tailwind CSS",
