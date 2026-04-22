@@ -32,6 +32,34 @@ export function projectSlug(project: Project): string {
 
 export const projects: Project[] = [
   {
+    title: "Ask Jane",
+    description: "Semantic Search Across Jane Austen's Novels",
+    image: "/screenshots/ask-jane-homepage.png",
+    "detail-image-first": "/screenshots/ask-jane-homepage.png",
+    "detail-image-second": "/screenshots/ask-jane-detail.png",
+    "detail-image-first-alt": "Ask Jane homepage screenshot",
+    "detail-image-second-alt":
+      "Ask Jane homepage scrolled down to search results screenshot",
+    href: "https://ask-jane.vercel.app/",
+    tags: [
+      { label: "Next.js" },
+      { label: "Pgvector" },
+      { label: "Voyage AI" },
+      { label: "Claude" },
+      { label: "PostgreSQL" },
+    ],
+    bullets: [
+      "RAG-powered search app that surfaces verbatim passages from all six Austen novels using natural language queries",
+      "Semantic search via pgvector (HNSW index) and Voyage AI embeddings stored in Neon PostgreSQL",
+      "AI-synthesized summaries grounded in retrieved passages via Anthropic Claude API",
+      "Custom data ingestion pipeline fetching, cleaning, and chunking ~6,500 paragraphs from Project Gutenberg plaintext files",
+      "Drizzle ORM for schema and queries; raw SQL for vector similarity search",
+      "Rate limiting with Upstash Redis to protect open endpoints",
+      "Built with Next.js App Router, TypeScript, Shadcn UI, and Tailwind CSS, deployed to Vercel",
+      "[github.com/basilleaf/ask-jane](https://github.com/basilleaf/ask-jane)",
+    ],
+  },
+  {
     title: "Flash Card App",
     description: "Subscription Flashcard App with free and pro plans",
     image: "/screenshots/flashy-cardy-course.png",

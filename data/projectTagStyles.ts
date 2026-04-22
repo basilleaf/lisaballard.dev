@@ -42,6 +42,8 @@ export const labelColors: Record<string, TagColor> = {
   Django: "blue",
   Cursor: "purple",
   Claude: "sky",
+  Pgvector: "green",
+  VoyageAI: "blue",
 };
 
 export const DEFAULT_TAG_COLOR: TagColor = "gray";
