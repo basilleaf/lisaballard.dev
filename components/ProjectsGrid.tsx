@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
+import { useReloadAfterExternalReturn } from "@/hooks/useReloadAfterExternalReturn";
 import { getProjectBySlug, projects, projectSlug } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import ProjectModal from "@/components/ProjectModal";
@@ -10,6 +11,7 @@ import ProjectModal from "@/components/ProjectModal";
 export default function ProjectsGrid() {
   const pathname = usePathname();
   const router = useRouter();
+  useReloadAfterExternalReturn();
 
   const selectedProject = useMemo(() => {
     const match = pathname.match(/^\/project\/([^/]+)\/?$/);

@@ -22,10 +22,9 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
       <div className="flex flex-col gap-4">
         <a
           href={project["detail-image-first"]}
-          target="_blank"
           rel="noopener noreferrer"
           className="relative block aspect-video cursor-pointer overflow-hidden rounded-lg border border-[#252525] bg-[#1a1a1a] outline-offset-2 focus-visible:outline-2 focus-visible:outline-[#D85A30]"
-          aria-label={`Open full image in new tab: ${project["detail-image-first-alt"]}`}
+          aria-label={`Open full image: ${project["detail-image-first-alt"]}`}
         >
           <Image
             src={project["detail-image-first"]}
@@ -38,10 +37,9 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
         {project["detail-image-second"] ? (
           <a
             href={project["detail-image-second"]}
-            target="_blank"
             rel="noopener noreferrer"
             className="relative block aspect-video cursor-pointer overflow-hidden rounded-lg border border-[#252525] bg-[#1a1a1a] outline-offset-2 focus-visible:outline-2 focus-visible:outline-[#D85A30]"
-            aria-label={`Open full image in new tab: ${
+            aria-label={`Open full image: ${
               project["detail-image-second-alt"] ??
               project["detail-image-first-alt"]
             }`}

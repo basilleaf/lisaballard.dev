@@ -1,6 +1,12 @@
 "use client";
 
-import type { ReactNode, RefObject } from "react";
+import {
+  useLayoutEffect,
+  useState,
+  type ReactNode,
+  type RefObject,
+} from "react";
+import { createPortal } from "react-dom";
 
 type ProjectModalContentWrapperProps = {
   onClose: () => void;
@@ -13,9 +19,17 @@ export default function ProjectModalContentWrapper({
   panelRef,
   children,
 }: ProjectModalContentWrapperProps) {
-  return (
+  const [usePortal, setUsePortal] = useState(false);
+
+  useLayoutEffect(() => {
+    // Attach to document.body after mount: avoids SSR/client mismatch (no `document` on server).
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- sync portal target after hydration
+    setUsePortal(true);
+  }, []);
+
+  const dialog = (
     <div
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-[1px] p-0 sm:p-8"
+      className="pointer-events-auto fixed inset-0 z-[200] overflow-y-auto bg-black/80 p-0 sm:p-8"
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-modal-title"
@@ -34,4 +48,10 @@ export default function ProjectModalContentWrapper({
       </div>
     </div>
   );
+
+  if (usePortal && typeof document !== "undefined" && document.body) {
+    return createPortal(dialog, document.body);
+  }
+
+  return dialog;
 }
