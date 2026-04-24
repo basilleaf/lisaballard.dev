@@ -33,7 +33,7 @@ export function projectSlug(project: Project): string {
 export const projects: Project[] = [
   {
     title: "Ask Oscar",
-    description: "Semantic search across some Oscar Wilde works",
+    description: "Semantic search across Oscar Wilde works",
     image: "/screenshots/ask-oscar-homepage.png",
     "detail-image-first": "/screenshots/ask-oscar-homepage.png",
     "detail-image-second": "/screenshots/ask-oscar-detail.png",
