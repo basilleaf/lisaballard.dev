@@ -32,8 +32,36 @@ export function projectSlug(project: Project): string {
 
 export const projects: Project[] = [
   {
+    title: "Ask Oscar",
+    description: "Semantic search across some Oscar Wilde works",
+    image: "/screenshots/ask-oscar-homepage.png",
+    "detail-image-first": "/screenshots/ask-oscar-homepage.png",
+    "detail-image-second": "/screenshots/ask-oscar-detail.png",
+    "detail-image-first-alt": "Ask Oscar homepage screenshot",
+    "detail-image-second-alt":
+      "Ask Oscar homepage scrolled down to search results screenshot",
+    href: "https://ask-oscar.vercel.app/",
+    tags: [
+      { label: "Next.js" },
+      { label: "Pgvector" },
+      { label: "Voyage AI" },
+      { label: "Claude" },
+      { label: "PostgreSQL" },
+    ],
+    bullets: [
+      "RAG-powered search app that surfaces verbatim passages from all six Oscar Wilde books using natural language queries",
+      "Semantic search via pgvector (HNSW index) and Voyage AI embeddings stored in Neon PostgreSQL",
+      "AI-synthesized summaries grounded in retrieved passages via Anthropic Claude API",
+      "Custom data ingestion pipeline fetching, cleaning, and chunking ~6,500 paragraphs from Project Gutenberg plaintext files",
+      "Drizzle ORM for schema and queries; raw SQL for vector similarity search",
+      "Rate limiting with Upstash Redis to protect open endpoints",
+      "Built with Next.js App Router, TypeScript, Shadcn UI, and Tailwind CSS, deployed to Vercel",
+      "[github.com/basilleaf/ask-jane](https://github.com/basilleaf/ask-jane)",
+    ],
+  },
+  {
     title: "Ask Jane",
-    description: "Semantic Search Across Jane Austen's Novels",
+    description: "Semantic search across Jane Austen's novels",
     image: "/screenshots/ask-jane-homepage.png",
     "detail-image-first": "/screenshots/ask-jane-homepage.png",
     "detail-image-second": "/screenshots/ask-jane-detail.png",
