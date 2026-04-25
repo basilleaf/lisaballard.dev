@@ -44,6 +44,7 @@ export const labelColors: Record<string, TagColor> = {
   Claude: "sky",
   Pgvector: "green",
   VoyageAI: "blue",
+  TypeScript: "green",
 };
 
 export const DEFAULT_TAG_COLOR: TagColor = "gray";

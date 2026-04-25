@@ -32,6 +32,26 @@ export function projectSlug(project: Project): string {
 
 export const projects: Project[] = [
   {
+    title: "Ambient Audio Mixer",
+    description: "Calm sound layers - vibe coded ambient audio mixer",
+    image: "/screenshots/ambient-mixer-homepage.png",
+    "detail-image-first": "/screenshots/ambient-mixer-homepage.png",
+    "detail-image-second": "/screenshots/ambient-mixer-detail.png",
+    "detail-image-first-alt": "Ambient Mixer homepage screenshot",
+    "detail-image-second-alt":
+      "Ambient Mixer screenshot showing players and volumes selected",
+    href: "https://ambient-mixer-xi.vercel.app/",
+    tags: [{ label: "Next.js" }, { label: "React" }, { label: "TypeScript" }],
+    bullets: [
+      "Browser-based ambient sound mixer. Stack rain, ocean, crickets, ambient music layers, and more as independent layers with per-track volume",
+      "Seamless looping without harsh cuts, dual HTMLAudio players per track with timed crossfades before each loop boundary",
+      "Shareable/bookmarkable mixes via query string: which tracks are playing and each volume level sync to the URL",
+      "Hydration from the URL on load so shared links resume the same soundscape; optional “Play all” for the visible subset",
+      "Built with Next.js App Router, React 19, TypeScript, Tailwind CSS",
+      "Unit tests for button visibilty logic and URL-state behavior with Jest + React Testing Library",
+    ],
+  },
+  {
     title: "Ask Oscar",
     description: "Semantic search across Oscar Wilde works",
     image: "/screenshots/ask-oscar-homepage.png",
