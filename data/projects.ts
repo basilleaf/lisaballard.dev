@@ -32,8 +32,8 @@ export function projectSlug(project: Project): string {
 
 export const projects: Project[] = [
   {
-    title: "Ambient Audio Mixer",
-    description: "Calm sound layers - vibe coded ambient audio mixer",
+    title: "Ambient Mixer",
+    description: "Calm sound layers - vibe coded audio mixing app",
     image: "/screenshots/ambient-mixer-homepage.png",
     "detail-image-first": "/screenshots/ambient-mixer-homepage.png",
     "detail-image-second": "/screenshots/ambient-mixer-detail.png",
@@ -47,7 +47,7 @@ export const projects: Project[] = [
       "Seamless looping without harsh cuts, dual HTMLAudio players per track with timed crossfades before each loop boundary",
       "Shareable/bookmarkable mixes via query string: which tracks are playing and each volume level sync to the URL",
       "Hydration from the URL on load so shared links resume the same soundscape; optional “Play all” for the visible subset",
-      "Night theme toggle for dark UI styling tuned for evening use and long sessions",
+      "Night theme toggle for dark UI styling tuned for evening use",
       "Built-in debug mode to surface app state and playback diagnostics (add debug=true to URL)",
       "Built with Next.js App Router, React 19, TypeScript, Tailwind CSS",
       "Unit tests for button visibilty logic and URL-state behavior with Jest + React Testing Library",
