@@ -32,6 +32,25 @@ export function projectSlug(project: Project): string {
 
 export const projects: Project[] = [
   {
+    title: "Go See Art SF",
+    description:
+      "Auto-updating feed of current art exhibitions across select San Francisco museums",
+    image: "/screenshots/go-see-art-homepage.png",
+    "detail-image-first": "/screenshots/go-see-art-homepage.png",
+    "detail-image-second": "/screenshots/go-see-art-detail.png",
+    "detail-image-first-alt": "Go See Art SF homepage screenshot",
+    "detail-image-second-alt": "Go See Art SF detail page screenshot",
+    href: "https://ambient-mixer-xi.vercel.app/",
+    tags: [{ label: "Next.js" }, { label: "React" }, { label: "TypeScript" }],
+    bullets: [
+      "Aggregates current and upcoming art exhibitions across 9 San Francisco museums into a single browsable feed",
+      "Custom scrapers per museum using fetch + node-html-parser, handling varied site structures including WordPress, Wix, and custom CMSes",
+      "Weekly automated scraping via GitHub Actions cron; scrapers are idempotent and upsert by canonical exhibition URL",
+      "Card grid homepage ordered by closing date; detail pages include full image with credit, date range, description, and link to museum",
+      "Built with Next.js App Router, React, TypeScript, Tailwind CSS v4, Drizzle ORM, and Neon Postgres",
+    ],
+  },
+  {
     title: "Ambient Mixer",
     description: "Calm sound layers - vibe coded audio mixing app",
     image: "/screenshots/ambient-mixer-homepage.png",
