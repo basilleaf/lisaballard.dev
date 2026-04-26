@@ -78,7 +78,7 @@ export const projects: Project[] = [
       "Drizzle ORM for schema and queries; raw SQL for vector similarity search",
       "Rate limiting with Upstash Redis to protect open endpoints",
       "Built with Next.js App Router, TypeScript, Shadcn UI, and Tailwind CSS, deployed to Vercel",
-      "[github.com/basilleaf/ask-jane](https://github.com/basilleaf/ask-jane)",
+      "[github.com/basilleaf/ask-oscar](https://github.com/basilleaf/ask-oscar)",
     ],
   },
   {
