@@ -51,6 +51,7 @@ export const projects: Project[] = [
       "Built-in debug mode to surface app state and playback diagnostics (add debug=true to URL)",
       "Built with Next.js App Router, React 19, TypeScript, Tailwind CSS",
       "Unit tests for button visibilty logic and URL-state behavior with Jest + React Testing Library",
+      "[github.com/basilleaf/ambient-mixer](https://github.com/basilleaf/ambient-mixer)",
     ],
   },
   {
