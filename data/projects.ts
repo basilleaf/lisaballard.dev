@@ -40,7 +40,7 @@ export const projects: Project[] = [
     "detail-image-second": "/screenshots/go-see-art-detail.png",
     "detail-image-first-alt": "Go See Art SF homepage screenshot",
     "detail-image-second-alt": "Go See Art SF detail page screenshot",
-    href: "https://ambient-mixer-xi.vercel.app/",
+    href: "https://go-see-art-sf-11o7.vercel.app/",
     tags: [{ label: "Next.js" }, { label: "React" }, { label: "TypeScript" }],
     bullets: [
       "Aggregates current and upcoming art exhibitions across 9 San Francisco museums into a single browsable feed",
