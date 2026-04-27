@@ -41,12 +41,7 @@ export const projects: Project[] = [
     "detail-image-first-alt": "Go See Art SF homepage screenshot",
     "detail-image-second-alt": "Go See Art SF detail page screenshot",
     href: "https://goseeartsf.com",
-    tags: [
-      { label: "Next.js" },
-      { label: "Claude" },
-      { label: "React" },
-      { label: "TypeScript" },
-    ],
+    tags: [{ label: "Next.js" }, { label: "Claude" }, { label: "PostgreSQL" }],
     bullets: [
       "Aggregates current and upcoming art exhibitions across 9 San Francisco museums into a single browsable feed",
       "Custom scrapers per museum using fetch + node-html-parser, handling varied site structures including WordPress, Wix, and custom CMSes",
