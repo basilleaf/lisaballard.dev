@@ -52,7 +52,7 @@ export const projects: Project[] = [
       "Custom scrapers per museum using fetch + node-html-parser, handling varied site structures including WordPress, Wix, and custom CMSes",
       "AI-synthesized summaries grounded in retrieved descriptions via Anthropic Claude API",
       "Weekly automated scraping via GitHub Actions cron; scrapers are idempotent and upsert by canonical exhibition URL",
-      "Card grid homepage ordered by closing date; detail pages include full image with credit, date range, description, and link to museum",
+      "Next and Previous buttons and mobile swipe gestures for easy navigation through detail pages",
       "Built with Next.js App Router, React, TypeScript, Tailwind CSS v4, Drizzle ORM, and Neon Postgres",
     ],
   },
