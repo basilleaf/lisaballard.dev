@@ -33,8 +33,7 @@ export function projectSlug(project: Project): string {
 export const projects: Project[] = [
   {
     title: "Go See Art SF",
-    description:
-      "Auto-updating feed of current art exhibitions across select San Francisco museums",
+    description: "Current art exhibitions across select San Francisco museums",
     image: "/screenshots/go-see-art-homepage.png",
     "detail-image-first": "/screenshots/go-see-art-homepage.png",
     "detail-image-second": "/screenshots/go-see-art-detail.png",
@@ -44,7 +43,7 @@ export const projects: Project[] = [
     tags: [{ label: "Next.js" }, { label: "Claude" }, { label: "PostgreSQL" }],
     bullets: [
       "Aggregates current and upcoming art exhibitions across 9 San Francisco museums into a single browsable feed",
-      "Custom scrapers per museum using fetch + node-html-parser, handling varied site structures including WordPress, Wix, and custom CMSes",
+      "Custom scrapers per museum handling varied site structures, using fetch + node-html-parser",
       "AI-synthesized summaries grounded in retrieved descriptions via Anthropic Claude API",
       "Weekly automated scraping via GitHub Actions cron; scrapers are idempotent and upsert by canonical exhibition URL",
       "Next and Previous buttons and mobile swipe gestures for easy navigation through detail pages",
