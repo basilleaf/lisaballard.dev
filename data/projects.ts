@@ -40,7 +40,7 @@ export const projects: Project[] = [
     "detail-image-second": "/screenshots/go-see-art-detail.png",
     "detail-image-first-alt": "Go See Art SF homepage screenshot",
     "detail-image-second-alt": "Go See Art SF detail page screenshot",
-    href: "https://go-see-art-sf-11o7.vercel.app/",
+    href: "https://goseeartsf.com",
     tags: [
       { label: "Next.js" },
       { label: "Claude" },
