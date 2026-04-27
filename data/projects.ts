@@ -42,7 +42,7 @@ export const projects: Project[] = [
     href: "https://goseeartsf.com",
     tags: [{ label: "Next.js" }, { label: "Claude" }, { label: "PostgreSQL" }],
     bullets: [
-      "Aggregates current and upcoming art exhibitions across 9 San Francisco museums into a single browsable feed",
+      "Aggregates art exhibitions across 9 San Francisco museums into a single browsable feed",
       "Custom scrapers per museum handling varied site structures, using fetch + node-html-parser",
       "AI-synthesized summaries grounded in retrieved descriptions via Anthropic Claude API",
       "Weekly automated scraping via GitHub Actions cron; scrapers are idempotent and upsert by canonical exhibition URL",
