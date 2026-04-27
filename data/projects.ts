@@ -41,10 +41,16 @@ export const projects: Project[] = [
     "detail-image-first-alt": "Go See Art SF homepage screenshot",
     "detail-image-second-alt": "Go See Art SF detail page screenshot",
     href: "https://go-see-art-sf-11o7.vercel.app/",
-    tags: [{ label: "Next.js" }, { label: "React" }, { label: "TypeScript" }],
+    tags: [
+      { label: "Next.js" },
+      { label: "Claude" },
+      { label: "React" },
+      { label: "TypeScript" },
+    ],
     bullets: [
       "Aggregates current and upcoming art exhibitions across 9 San Francisco museums into a single browsable feed",
       "Custom scrapers per museum using fetch + node-html-parser, handling varied site structures including WordPress, Wix, and custom CMSes",
+      "AI-synthesized summaries grounded in retrieved descriptions via Anthropic Claude API",
       "Weekly automated scraping via GitHub Actions cron; scrapers are idempotent and upsert by canonical exhibition URL",
       "Card grid homepage ordered by closing date; detail pages include full image with credit, date range, description, and link to museum",
       "Built with Next.js App Router, React, TypeScript, Tailwind CSS v4, Drizzle ORM, and Neon Postgres",
