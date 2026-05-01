@@ -48,6 +48,7 @@ export const projects: Project[] = [
       "Weekly automated scraping via GitHub Actions cron; scrapers are idempotent and upsert by canonical exhibition URL",
       "Next and Previous buttons and mobile swipe gestures for easy navigation through detail pages",
       "Built with Next.js App Router, React, TypeScript, Tailwind CSS v4, Drizzle ORM, and Neon Postgres",
+      "[github.com/basilleaf/go-see-art-sf](https://github.com/basilleaf/go-see-art-sf)",
     ],
   },
   {
