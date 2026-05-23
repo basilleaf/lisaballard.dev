@@ -32,6 +32,27 @@ export function projectSlug(project: Project): string {
 
 export const projects: Project[] = [
   {
+    title: "QueueTube",
+    description: "Paste YouTube links to build a looping shareable playlist",
+    image: "/screenshots/queuetube-homepage.png",
+    "detail-image-first": "/screenshots/queuetube-homepage.png",
+    "detail-image-second": "/screenshots/queuetube-mobile.png",
+    "detail-image-first-alt": "QueuTube Desktop Homepage",
+    "detail-image-second-alt": "QueuTube Mobile Homepage",
+    href: "https://queuetube.org",
+    tags: [{ label: "Next.js" }, { label: "Claude" }],
+    bullets: [
+      "YouTube queue builder - paste video URLs to build and play a playlist",
+      "Playlist loops forever, supports full screen and shareable links",
+      "Queue persists in the URL as a comma-separated video ID param - sharable and bookmark-friendly",
+      "Drag-and-drop reordering via dnd-kit with index-aware current-track tracking that survives moves, removals, and reorders",
+      "Video titles fetched from YouTube's oEmbed API; thumbnails resolved directly from YouTube's image CDN",
+      "YouTube IFrame API encapsulated in a custom useYouTubePlayer hook — auto-advances to the next video on playback end",
+      "Built with Next.js App Router, React 19, TypeScript, Tailwind CSS v4, and dnd-kit for drag-and-drop",
+      "[github.com/basilleaf/queue-tube](https://github.com/basilleaf/queue-tube)",
+    ],
+  },
+  {
     title: "Go See Art SF",
     description: "Current art exhibitions across select San Francisco museums",
     image: "/screenshots/go-see-art-homepage.png",
