@@ -32,6 +32,33 @@ export function projectSlug(project: Project): string {
 
 export const projects: Project[] = [
   {
+    title: "Morning Scrolly Page",
+    description:
+      "Mobile Positivity Page for Scrolling First Thing in the Morning",
+    image: "/screenshots/morning-scrolly-1.png",
+    "detail-image-first": "/screenshots/morning-scrolly-1.png",
+    "detail-image-second": "/screenshots/morning-scrolly-2.png",
+    "detail-image-first-alt": "Morning Scrolly Page Screenshot - First Half",
+    "detail-image-second-alt": "Morning Scrolly Page Screenshot - Last Half",
+    href: "https://morning-scrolly-page.vercel.app/",
+    tags: [{ label: "Next.js" }, { label: "PostgreSQL" }, { label: "Claude" }],
+    bullets: [
+      "Personal morning ritual page, a single scrollable mobile-first view that surfaces daily content for a calm, intentional start to the day",
+      "Daily content seeded by date using a deterministic RNG so the song, Tao verse, Buddhist text, affirmation, and quotes rotate daily but stay consistent throughout the day",
+      "Live weather summary and AQI fetched on load from location-based APIs, displayed in the hero with sunrise/sunset times",
+      "Claude-powered local news filter that uses web search to check for fires, floods, outages, and emergencies, returning either an all-clear or a minimal list of only what you actually need to know; result cached in Postgres for an hour",
+      "NASA Astronomy Picture of the Day and Met Museum artwork pulled from public APIs and a pre-seeded Postgres catalog to bring a daily dose of beauty and wonder",
+      "AI-generated Tao Te Ching reflection via Claude (Haiku); each verse's commentary is generated once and cached in Neon Postgres so it's never regenerated for the same verse",
+      "CSS keyframe breathing exercise with a pulsing circle that scales in and out on a 14-second loop, fading 'in' / 'out' labels timed to the inhale and exhale phases",
+      "Login gate unlocks the news check and a personal to-do list; session managed via a lightweight cookie-based auth API route",
+      "Neon Postgres backs todos, Tao reflection cache, Met artwork catalog, and news digest cache, accessed via the @neondatabase/serverless driver in Next.js API routes",
+      "Fade-in entrance animation on load; 430px max-width layout designed to feel like a native mobile app",
+      "RSS feeds from Yoga Journal, NASA News, Epic Gardening, and others fetched and parsed server-side, surfaced as curated reading sections",
+      "Built with Next.js App Router, React 19, TypeScript, Tailwind CSS v4, and Neon Postgres",
+      "[github.com/basilleaf/morning-scrolly-page](https://github.com/basilleaf/morning-scrolly-page)",
+    ],
+  },
+  {
     title: "QueueTube",
     description: "Paste YouTube links to build a looping shareable playlist",
     image: "/screenshots/queuetube-homepage.png",
