@@ -1,32 +1,8 @@
 /** @vitest-environment happy-dom */
 
-import { cleanup, render, waitFor } from "@testing-library/react";
-import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
+import { cleanup, fireEvent, render } from "@testing-library/react";
+import { describe, expect, it, vi, afterEach } from "vitest";
 import { useProjectModalInteraction } from "./useProjectModalInteraction";
-
-let swipeLeftHandler: (() => void) | undefined;
-let swipeRightHandler: (() => void) | undefined;
-const hammerDestroy = vi.fn();
-
-vi.mock("hammerjs", () => ({
-  default: class MockHammer {
-    static DIRECTION_HORIZONTAL = 4;
-    constructor(_el: Element) {
-      swipeLeftHandler = undefined;
-      swipeRightHandler = undefined;
-    }
-    get() {
-      return { set: vi.fn() };
-    }
-    on(event: string, handler: () => void) {
-      if (event === "swipeleft") swipeLeftHandler = handler;
-      if (event === "swiperight") swipeRightHandler = handler;
-    }
-    destroy = () => {
-      hammerDestroy();
-    };
-  },
-}));
 
 type HarnessProps = {
   onClose: () => void;
@@ -40,54 +16,30 @@ function Harness({ onClose, onPrevious, onNext }: HarnessProps) {
     onPrevious,
     onNext,
   });
-  return <div ref={panelRef} />;
+  return <div ref={panelRef} data-testid="panel" />;
 }
 
-let mqMatches = true;
-const mqChangeListeners: Array<() => void> = [];
-
-function installMatchMedia() {
-  window.matchMedia = vi.fn((query: string) => ({
-    matches: mqMatches,
-    media: query,
-    addEventListener: (_type: string, cb: EventListener) => {
-      mqChangeListeners.push(cb as () => void);
-    },
-    removeEventListener: (_type: string, cb: EventListener) => {
-      const i = mqChangeListeners.indexOf(cb as () => void);
-      if (i >= 0) mqChangeListeners.splice(i, 1);
-    },
-    dispatchEvent: vi.fn(),
-    onchange: null,
-    addListener: vi.fn(),
-    removeListener: vi.fn(),
-  })) as typeof window.matchMedia;
+// Dispatch on the element so event.target is set correctly and event bubbles to document
+function swipeLeft(el: Element, dx = -80) {
+  fireEvent.touchStart(el, { touches: [{ clientX: 200, clientY: 100 }] });
+  fireEvent.touchEnd(el, { changedTouches: [{ clientX: 200 + dx, clientY: 100 }] });
 }
 
-beforeEach(() => {
-  mqMatches = true;
-  mqChangeListeners.length = 0;
-  swipeLeftHandler = undefined;
-  swipeRightHandler = undefined;
-  hammerDestroy.mockClear();
-  installMatchMedia();
-});
+function swipeRight(el: Element, dx = 80) {
+  fireEvent.touchStart(el, { touches: [{ clientX: 100, clientY: 100 }] });
+  fireEvent.touchEnd(el, { changedTouches: [{ clientX: 100 + dx, clientY: 100 }] });
+}
 
 afterEach(() => {
   cleanup();
   vi.restoreAllMocks();
-  installMatchMedia();
 });
 
 describe("useProjectModalInteraction", () => {
   it("calls onClose when Escape is pressed", () => {
     const onClose = vi.fn();
     render(<Harness onClose={onClose} />);
-
-    window.dispatchEvent(
-      new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
-    );
-
+    window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
@@ -95,11 +47,7 @@ describe("useProjectModalInteraction", () => {
     const onClose = vi.fn();
     const onPrevious = vi.fn();
     render(<Harness onClose={onClose} onPrevious={onPrevious} />);
-
-    window.dispatchEvent(
-      new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }),
-    );
-
+    window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }));
     expect(onPrevious).toHaveBeenCalledTimes(1);
     expect(onClose).not.toHaveBeenCalled();
   });
@@ -108,11 +56,7 @@ describe("useProjectModalInteraction", () => {
     const onClose = vi.fn();
     const onNext = vi.fn();
     render(<Harness onClose={onClose} onNext={onNext} />);
-
-    window.dispatchEvent(
-      new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }),
-    );
-
+    window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }));
     expect(onNext).toHaveBeenCalledTimes(1);
     expect(onClose).not.toHaveBeenCalled();
   });
@@ -120,132 +64,94 @@ describe("useProjectModalInteraction", () => {
   it("does not react to ArrowLeft or ArrowRight when handlers are omitted", () => {
     const onClose = vi.fn();
     render(<Harness onClose={onClose} />);
-
-    window.dispatchEvent(
-      new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }),
-    );
-    window.dispatchEvent(
-      new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }),
-    );
-
+    window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }));
+    window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }));
     expect(onClose).not.toHaveBeenCalled();
   });
 
   it("prevents default for ArrowLeft and ArrowRight when navigation handlers exist", () => {
-    const onPrevious = vi.fn();
-    const onNext = vi.fn();
-    render(
-      <Harness
-        onClose={vi.fn()}
-        onPrevious={onPrevious}
-        onNext={onNext}
-      />,
-    );
+    render(<Harness onClose={vi.fn()} onPrevious={vi.fn()} onNext={vi.fn()} />);
 
-    const left = new KeyboardEvent("keydown", {
-      key: "ArrowLeft",
-      bubbles: true,
-      cancelable: true,
-    });
+    const left = new KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true, cancelable: true });
     const leftPd = vi.spyOn(left, "preventDefault");
     window.dispatchEvent(left);
     expect(leftPd).toHaveBeenCalled();
 
-    const right = new KeyboardEvent("keydown", {
-      key: "ArrowRight",
-      bubbles: true,
-      cancelable: true,
-    });
+    const right = new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true, cancelable: true });
     const rightPd = vi.spyOn(right, "preventDefault");
     window.dispatchEvent(right);
     expect(rightPd).toHaveBeenCalled();
   });
 
-  it("registers Hammer swipe handlers on small viewports when navigation is available", async () => {
-    mqMatches = true;
+  it("calls onNext on swipe left within the panel", () => {
     const onNext = vi.fn();
     const onPrevious = vi.fn();
-
-    render(
-      <Harness
-        onClose={vi.fn()}
-        onPrevious={onPrevious}
-        onNext={onNext}
-      />,
+    const { getByTestId } = render(
+      <Harness onClose={vi.fn()} onPrevious={onPrevious} onNext={onNext} />,
     );
-
-    await waitFor(() => {
-      expect(swipeLeftHandler).toBeDefined();
-      expect(swipeRightHandler).toBeDefined();
-    });
-
-    swipeLeftHandler?.();
+    swipeLeft(getByTestId("panel"));
     expect(onNext).toHaveBeenCalledTimes(1);
+    expect(onPrevious).not.toHaveBeenCalled();
+  });
 
-    swipeRightHandler?.();
+  it("calls onPrevious on swipe right within the panel", () => {
+    const onNext = vi.fn();
+    const onPrevious = vi.fn();
+    const { getByTestId } = render(
+      <Harness onClose={vi.fn()} onPrevious={onPrevious} onNext={onNext} />,
+    );
+    swipeRight(getByTestId("panel"));
     expect(onPrevious).toHaveBeenCalledTimes(1);
+    expect(onNext).not.toHaveBeenCalled();
   });
 
-  it("does not attach Hammer when viewport is not small", async () => {
-    mqMatches = false;
-    render(
-      <Harness
-        onClose={vi.fn()}
-        onPrevious={vi.fn()}
-        onNext={vi.fn()}
-      />,
-    );
-
-    await new Promise((r) => setTimeout(r, 30));
-
-    expect(swipeLeftHandler).toBeUndefined();
-    expect(swipeRightHandler).toBeUndefined();
+  it("does not fire swipe when horizontal distance is too short", () => {
+    const onNext = vi.fn();
+    const { getByTestId } = render(<Harness onClose={vi.fn()} onNext={onNext} />);
+    swipeLeft(getByTestId("panel"), -20);
+    expect(onNext).not.toHaveBeenCalled();
   });
 
-  it("does not set up swipe when neither onPrevious nor onNext is passed", async () => {
-    mqMatches = true;
-    render(<Harness onClose={vi.fn()} />);
-
-    await new Promise((r) => setTimeout(r, 30));
-
-    expect(swipeLeftHandler).toBeUndefined();
-    expect(swipeRightHandler).toBeUndefined();
+  it("does not fire swipe when movement is more vertical than horizontal", () => {
+    const onNext = vi.fn();
+    const { getByTestId } = render(<Harness onClose={vi.fn()} onNext={onNext} />);
+    // dx=-80, dy=-120 → more vertical
+    fireEvent.touchStart(getByTestId("panel"), { touches: [{ clientX: 200, clientY: 200 }] });
+    fireEvent.touchEnd(getByTestId("panel"), { changedTouches: [{ clientX: 120, clientY: 80 }] });
+    expect(onNext).not.toHaveBeenCalled();
   });
 
-  it("destroys Hammer when the media query changes from small to large", async () => {
-    mqMatches = true;
-    render(
-      <Harness
-        onClose={vi.fn()}
-        onPrevious={vi.fn()}
-        onNext={vi.fn()}
-      />,
-    );
+  it("does not fire swipe when touch starts outside the panel", () => {
+    const onNext = vi.fn();
+    render(<Harness onClose={vi.fn()} onNext={onNext} />);
+    // target is body, not the panel
+    fireEvent.touchStart(document.body, { touches: [{ clientX: 200, clientY: 100 }] });
+    fireEvent.touchEnd(document.body, { changedTouches: [{ clientX: 100, clientY: 100 }] });
+    expect(onNext).not.toHaveBeenCalled();
+  });
 
-    await waitFor(() => {
-      expect(swipeLeftHandler).toBeDefined();
-    });
-    hammerDestroy.mockClear();
-
-    mqMatches = false;
-    mqChangeListeners.forEach((cb) => cb());
-
-    await waitFor(() => {
-      expect(hammerDestroy).toHaveBeenCalled();
-    });
+  it("does not set up swipe when neither onPrevious nor onNext is passed", () => {
+    const { getByTestId } = render(<Harness onClose={vi.fn()} />);
+    // should not throw
+    swipeLeft(getByTestId("panel"));
+    swipeRight(getByTestId("panel"));
   });
 
   it("removes keydown listener on unmount", () => {
     const onClose = vi.fn();
     const removeSpy = vi.spyOn(window, "removeEventListener");
     const { unmount } = render(<Harness onClose={onClose} />);
-
     unmount();
+    expect(removeSpy).toHaveBeenCalledWith("keydown", expect.any(Function));
+  });
 
-    expect(removeSpy).toHaveBeenCalledWith(
-      "keydown",
-      expect.any(Function),
+  it("removes touch listeners on unmount", () => {
+    const removeSpy = vi.spyOn(document, "removeEventListener");
+    const { unmount } = render(
+      <Harness onClose={vi.fn()} onNext={vi.fn()} onPrevious={vi.fn()} />,
     );
-    removeSpy.mockRestore();
+    unmount();
+    expect(removeSpy).toHaveBeenCalledWith("touchstart", expect.any(Function));
+    expect(removeSpy).toHaveBeenCalledWith("touchend", expect.any(Function));
   });
 });

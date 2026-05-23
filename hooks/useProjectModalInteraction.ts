@@ -19,38 +19,55 @@ export function useProjectModalInteraction({
     const showNav = Boolean(onPrevious || onNext);
     if (!showNav) return;
 
-    const el = panelRef.current;
-    if (!el) return;
+    let startX = 0;
+    let startY = 0;
+    let tracking = false;
 
-    let cancelled = false;
-    const mq = window.matchMedia("(max-width: 1023px)");
-    let hammer: HammerManager | null = null;
-
-    const attach = async () => {
-      hammer?.destroy();
-      hammer = null;
-      if (!mq.matches || cancelled) return;
-
-      const Hammer = (await import("hammerjs")).default;
-      if (cancelled || !mq.matches) return;
-
-      const h = new Hammer(el);
-      h.get("swipe").set({ direction: Hammer.DIRECTION_HORIZONTAL });
-      h.on("swipeleft", () => {
+    function onEnd(endX: number, endY: number) {
+      if (!tracking) return;
+      tracking = false;
+      const dx = endX - startX;
+      const dy = endY - startY;
+      if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+      if (dx < 0) {
         onNext?.();
-      });
-      h.on("swiperight", () => {
+      } else {
         onPrevious?.();
-      });
-      hammer = h;
-    };
+      }
+    }
 
-    void attach();
-    mq.addEventListener("change", attach);
+    function onTouchStart(e: TouchEvent) {
+      if (!panelRef.current?.contains(e.target as Node)) return;
+      tracking = true;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }
+
+    function onTouchEnd(e: TouchEvent) {
+      onEnd(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+    }
+
+    function onMouseDown(e: MouseEvent) {
+      if (!panelRef.current?.contains(e.target as Node)) return;
+      tracking = true;
+      startX = e.clientX;
+      startY = e.clientY;
+    }
+
+    function onMouseUp(e: MouseEvent) {
+      onEnd(e.clientX, e.clientY);
+    }
+
+    document.addEventListener("touchstart", onTouchStart, { passive: true });
+    document.addEventListener("touchend", onTouchEnd, { passive: true });
+    document.addEventListener("mousedown", onMouseDown);
+    document.addEventListener("mouseup", onMouseUp);
+
     return () => {
-      cancelled = true;
-      mq.removeEventListener("change", attach);
-      hammer?.destroy();
+      document.removeEventListener("touchstart", onTouchStart);
+      document.removeEventListener("touchend", onTouchEnd);
+      document.removeEventListener("mousedown", onMouseDown);
+      document.removeEventListener("mouseup", onMouseUp);
     };
   }, [onPrevious, onNext]);
 
