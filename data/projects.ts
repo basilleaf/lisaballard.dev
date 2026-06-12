@@ -32,6 +32,28 @@ export function projectSlug(project: Project): string {
 
 export const projects: Project[] = [
   {
+    title: "YouTube Fader",
+    description:
+      "Loop any YouTube video while the screen slowly fades to black",
+    image: "/screenshots/youtube-fader-desktop.png",
+    "detail-image-first": "/screenshots/youtube-fader-desktop.png",
+    "detail-image-second": "/screenshots/youtube-fader-mobile.png",
+    "detail-image-first-alt": "YouTube Fader Desktop",
+    "detail-image-second-alt": "YouTube Fader Mobile",
+    href: "https://youtube-dimmer.vercel.app/?v=Wh87Q7wU5g0&d=3",
+    tags: [{ label: "Vite" }, { label: "React" }, { label: "TypeScript" }],
+    bullets: [
+      "Ambient video player - paste any YouTube URL and the screen slowly fades to black over a configurable duration (default 8 hours)",
+      "Built for falling asleep to ambient video: the screen dims to black over hours so you won't wake to a bright display, while audio continues uninterrupted.",
+      "Video loops indefinitely via the YouTube IFrame API; native fullscreen is disabled in favor of a custom button that fullscreens the wrapper div so the fade overlay travels into fullscreen with the player",
+      "Fade timeline is independent of video playback: driven by clock time, so it doesn't drifts on video loops or when its tab is backgrounded",
+      "Duration and video ID persisted in the URL (?v=ID&d=hours) — shareable and bookmark-friendly, no localStorage needed",
+      "Smooth fade curve powered by bezier-easing; animation loop uses requestAnimationFrame with visibility-change recovery to avoid drift on tab switch",
+      "Built with Vite, React 19, TypeScript, and Tailwind CSS v4",
+      "[github.com/basilleaf/youtube-dimmer](https://github.com/basilleaf/youtube-dimmer)",
+    ],
+  },
+  {
     title: "Morning Scrolly Page",
     description:
       "Mobile Positivity Page for Scrolling First Thing in the Morning",
