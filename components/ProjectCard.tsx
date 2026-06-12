@@ -18,7 +18,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       className="group relative flex flex-col gap-0 sm:gap-4 bg-[#111] p-0 sm:p-5 m-0 sm:m-1 rounded-small sm:rounded-lg cursor-pointer transition-colors duration-200 hover:bg-[#161616] text-left"
     >
       {/* Arrow */}
-      <span className="absolute top-4 right-4 sm:top-5 sm:right-6 z-10 text-sm text-[#333] transition-all duration-200 group-hover:text-[#F0EDE6] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+      <span className="hidden sm:inline absolute sm:top-5 sm:right-6 z-10 text-sm text-[#333] transition-all duration-200 group-hover:text-[#F0EDE6] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
         ↗
       </span>
 
