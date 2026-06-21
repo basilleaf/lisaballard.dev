@@ -7,15 +7,30 @@ export default function Header() {
         BALLARD
       </h1>
       <div className="text-right pl-6">
-        <div className="flex items-center justify-end gap-1.5 text-[#1D9E75] text-sm font-medium mb-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#1D9E75] animate-pulse" />
-          Available for work
-        </div>
         <p className="text-[15px] text-[#b8b6b1] leading-relaxed">
           Senior full-stack engineer
           <br />
           TypeScript · React · GraphQL · SQL
         </p>
+        <div className="flex items-center justify-end gap-1.5 text-[#1D9E75] text-sm font-medium mb-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#1D9E75] animate-pulse" />
+          Available for work
+        </div>
+
+        <div className="flex items-center justify-end gap-4 mb-1.5">
+          <a
+            href="https://github.com/basilleaf"
+            className="text-sm text-[#b8b6b1] hover:text-[#FAF9F6] transition-colors duration-150"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/lisaballard42/"
+            className="text-sm text-[#b8b6b1] hover:text-[#FAF9F6] transition-colors duration-150"
+          >
+            LinkedIn
+          </a>
+        </div>
       </div>
     </header>
   );
